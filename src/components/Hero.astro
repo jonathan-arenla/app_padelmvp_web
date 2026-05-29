@@ -1,0 +1,80 @@
+---
+import PhoneMockup from './PhoneMockup.astro';
+---
+<section class="relative overflow-hidden pt-20 pb-32">
+  <!-- Background grid -->
+  <div class="absolute inset-0 grid-pattern opacity-50"></div>
+  <!-- Court lines decorative -->
+  <div class="absolute -top-32 left-1/2 -translate-x-1/2 h-[600px] w-[1200px] rotate-[35deg] opacity-10 pointer-events-none">
+    <div class="absolute inset-0 border-2 border-brand-600 rounded-3xl"></div>
+    <div class="absolute inset-x-0 top-1/2 h-px bg-brand-600"></div>
+    <div class="absolute inset-y-0 left-1/2 w-px bg-brand-600"></div>
+  </div>
+
+  <div class="container-x relative z-10 grid lg:grid-cols-[1.1fr_1fr] gap-16 items-center">
+    <div>
+      <div class="inline-flex items-center gap-2 rounded-full bg-white ring-1 ring-ink-900/10 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-brand-600 shadow-card">
+        <span class="relative h-2 w-2 rounded-full bg-brand-500 pulse-ring"></span>
+        Nueva temporada · 2026
+      </div>
+      <h1 class="mt-6 font-display text-5xl md:text-7xl font-bold leading-[1.05] text-ink-900">
+        La app del <br/>
+        <span class="text-gradient-brand">padelero exigente</span><br/>
+        que vive el <span class="italic underline decoration-coral-400 decoration-[6px] underline-offset-4">3er tiempo</span>.
+      </h1>
+      <p class="mt-6 max-w-xl text-lg text-ink-500">
+        Reserva, juega, vota tu <strong class="text-coral-600">MVP</strong>, paga desde el móvil y queda
+        para la cerveza. Todo en una app pensada por padeleros que no se conforman.
+      </p>
+
+      <div class="mt-8 flex flex-wrap items-center gap-4">
+        <a href="#download" class="btn-primary text-base">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l10 8-10 8V4z"/></svg>
+          Descargar gratis
+        </a>
+        <a href="#manager" class="btn-ghost text-base">Soy un club →</a>
+      </div>
+
+      <div class="mt-10 flex items-center gap-6 text-sm text-ink-500">
+        <div class="flex -space-x-2">
+          <div class="h-8 w-8 rounded-full bg-gradient-to-br from-brand-500 to-coral-500 ring-2 ring-white grid place-items-center text-white text-[10px] font-bold">J</div>
+          <div class="h-8 w-8 rounded-full bg-gradient-to-br from-coral-500 to-brand-500 ring-2 ring-white grid place-items-center text-white text-[10px] font-bold">M</div>
+          <div class="h-8 w-8 rounded-full bg-gradient-to-br from-brand-400 to-brand-700 ring-2 ring-white grid place-items-center text-white text-[10px] font-bold">A</div>
+          <div class="h-8 w-8 rounded-full bg-ink-900 ring-2 ring-white grid place-items-center text-white text-[10px] font-bold">+24k</div>
+        </div>
+        <div>
+          <p class="font-semibold text-ink-900">★★★★★ 4.9 / 5</p>
+          <p>+24.000 padeleros nos prefieren</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phone stack 3D -->
+    <div class="relative flex items-center justify-center min-h-[640px] card-3d">
+      <div class="absolute left-0 animate-float-mid z-10">
+        <PhoneMockup variant="booking" tilt="left" />
+      </div>
+      <div class="absolute right-0 top-20 animate-float-slow z-20">
+        <PhoneMockup variant="mvp" tilt="right" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Marquee bar -->
+  <div class="mt-24 border-y border-ink-900/5 bg-cream overflow-hidden py-5">
+    <div class="flex gap-12 whitespace-nowrap animate-marquee text-ink-500 font-display font-semibold uppercase tracking-widest text-sm">
+      {Array(2).fill(0).map(() => (
+        <div class="flex gap-12 shrink-0">
+          <span>· Reservas instantáneas</span>
+          <span>· Ranking MVP</span>
+          <span>· Pagos con Bizum & wallet</span>
+          <span>· Tercer tiempo organizado</span>
+          <span>· Comunidades privadas</span>
+          <span>· Partidos abiertos</span>
+          <span>· Stats avanzadas</span>
+          <span>· Clubs verificados</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

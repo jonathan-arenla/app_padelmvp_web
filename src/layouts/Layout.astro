@@ -1,0 +1,32 @@
+---
+import '../styles/global.css';
+export interface Props {
+  title?: string;
+  description?: string;
+}
+const {
+  title = 'PadelMVP — La app del padelero exigente',
+  description = 'PadelMVP: app de padel para jugadores exigentes y clubs. Reservas, MVP de partido, pagos desde el móvil y gestión integral de pistas. Más fácil. Más barato que Playtomic.',
+} = Astro.props;
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://rsms.me/" />
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

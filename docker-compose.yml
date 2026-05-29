@@ -1,0 +1,36 @@
+services:
+  # Production: static build served by nginx
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: padelmvp-web:latest
+    container_name: padelmvp-web
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    profiles: ["", "prod"]
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1/healthz"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  # Development: Astro dev server with hot reload
+  # Run with:  docker compose --profile dev up
+  dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    image: padelmvp-web-dev:latest
+    container_name: padelmvp-web-dev
+    ports:
+      - "4321:4321"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+    profiles: ["dev"]
+    command: npm run dev -- --host 0.0.0.0

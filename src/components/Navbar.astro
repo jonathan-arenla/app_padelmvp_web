@@ -1,0 +1,31 @@
+---
+const links = [
+  { href: '#features', label: 'Jugadores' },
+  { href: '#manager', label: 'Manager' },
+  { href: '#dashboard', label: 'Dashboard' },
+  { href: '#pricing', label: 'Precios' },
+];
+---
+<header class="sticky top-0 z-50 backdrop-blur-xl bg-white/80 border-b border-ink-900/5">
+  <div class="container-x flex h-16 items-center justify-between">
+    <a href="/" class="flex items-center gap-2 font-display text-lg font-bold text-ink-900">
+      <span class="grid h-8 w-8 place-items-center rounded-xl bg-gradient-to-br from-brand-600 to-coral-500 text-white shadow-glow">
+        <svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor">
+          <ellipse cx="9.5" cy="9" rx="6.5" ry="7.5"/>
+          <rect x="8.5" y="15" width="2" height="6" rx="1"/>
+          <circle cx="17" cy="17" r="2.5"/>
+        </svg>
+      </span>
+      <span>PadelMVP</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-7 text-sm text-ink-700">
+      {links.map(l => (
+        <a href={l.href} class="hover:text-brand-600 transition">{l.label}</a>
+      ))}
+    </nav>
+    <div class="flex items-center gap-2">
+      <a href="#pricing" class="hidden sm:inline-flex btn-ghost py-2 px-4 text-sm">Para clubs</a>
+      <a href="#download" class="btn-primary py-2 px-4 text-sm">Descargar app</a>
+    </div>
+  </div>
+</header>

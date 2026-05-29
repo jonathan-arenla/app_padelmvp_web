@@ -1,0 +1,46 @@
+---
+import PhoneMockup from './PhoneMockup.astro';
+---
+<section id="community" class="relative py-28 overflow-hidden bg-cream">
+  <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-300 to-transparent"></div>
+  <div class="container-x grid lg:grid-cols-[1fr_1.1fr] gap-16 items-center">
+    <div class="relative flex justify-center card-3d min-h-[600px]">
+      <div class="absolute -inset-20 bg-coral-200/60 blur-3xl rounded-full"></div>
+      <div class="relative animate-float-slow">
+        <PhoneMockup variant="mvp" tilt="none" />
+      </div>
+      <!-- Floating tags -->
+      <div class="absolute top-10 -left-4 bg-white rounded-2xl px-4 py-3 shadow-card animate-float-mid ring-1 ring-ink-900/5">
+        <p class="text-[10px] uppercase tracking-widest text-brand-600 font-bold">VOTADO MVP</p>
+        <p class="text-sm font-bold text-ink-900">+50 pts</p>
+      </div>
+      <div class="absolute bottom-16 -right-4 bg-white rounded-2xl px-4 py-3 shadow-card animate-float-slow ring-1 ring-ink-900/5">
+        <p class="text-[10px] uppercase tracking-widest text-coral-600 font-bold">3er Tiempo</p>
+        <p class="text-sm font-bold text-ink-900">Cervezas pedidas 🍻</p>
+      </div>
+    </div>
+
+    <div>
+      <p class="text-xs uppercase tracking-[0.3em] text-coral-600 font-bold">El alma del padel</p>
+      <h2 class="mt-3 font-display text-4xl md:text-5xl font-bold">El partido <span class="text-gradient-brand">empieza en la pista</span>, pero termina en el tercer tiempo.</h2>
+      <p class="mt-5 text-ink-500 text-lg">PadelMVP organiza lo que pasa <strong class="text-ink-900">después</strong> del último punto: mesa reservada, cuenta dividida, fotos del partido y nominación al MVP por votación.</p>
+
+      <ul class="mt-8 space-y-4">
+        {[
+          { t: 'Vota al MVP del partido', d: 'Los 4 votan al mejor. El ganador se lleva puntos, badge y derecho a fardar.' },
+          { t: 'Mesa en 1 toque', d: 'Bares y restaurantes aliados con descuentos exclusivos para usuarios PadelMVP.' },
+          { t: 'Divide la cuenta sin discusiones', d: 'Wallet integrada, Bizum directo. Nadie se olvida de pagar su parte.' },
+          { t: 'Resumen del partido en vídeo', d: 'En clubs con cámaras compatibles, recibe los mejores puntos automáticamente.' },
+        ].map(item => (
+          <li class="flex gap-4">
+            <div class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-brand-600 text-white font-bold shadow-glow">✓</div>
+            <div>
+              <p class="font-semibold text-ink-900">{item.t}</p>
+              <p class="text-ink-500 text-sm">{item.d}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>

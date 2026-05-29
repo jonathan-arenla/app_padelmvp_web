@@ -1,0 +1,25 @@
+---
+const faqs = [
+  { q: '¿Cómo funciona el sistema MVP?', a: 'Al acabar el partido, cada uno de los 4 jugadores vota al MVP. Quien gana más votos se lleva el badge, puntos en el ranking del club y bonificaciones en la wallet. Sin discusiones, todo dentro de la app.' },
+  { q: '¿En qué se diferencia de Playtomic?', a: 'Somos hasta un 45% más baratos para clubs, sin permanencias largas. Para los jugadores, el plan base es gratis sin comisiones por reserva. Y nuestro ADN es la comunidad: MVP, tercer tiempo y stats de verdad.' },
+  { q: '¿Qué necesito para abrir mi club en PadelMVP Manager?', a: 'Solo el nombre, ubicación y las pistas. En 24h tu club está operativo. Migramos tu base de socios gratis si vienes de otro sistema.' },
+  { q: '¿Cómo se cobran las reservas?', a: 'Tarjeta, Bizum, Apple/Google Pay o saldo wallet. Las divisiones automáticas entre los 4 jugadores son cosa de la app. El club recibe el ingreso completo en 24h.' },
+  { q: '¿Tengo soporte?', a: 'Soporte por chat para jugadores. Soporte prioritario por chat + teléfono para clubs (8h en Club, 4h en Club Pro).' },
+];
+---
+<section class="py-24">
+  <div class="container-x max-w-3xl">
+    <h2 class="font-display text-4xl font-bold text-center">Preguntas <span class="text-gradient-brand">frecuentes</span></h2>
+    <div class="mt-10 space-y-3">
+      {faqs.map(f => (
+        <details class="bg-white rounded-2xl px-6 py-4 group ring-1 ring-ink-900/5 shadow-card">
+          <summary class="flex cursor-pointer items-center justify-between font-semibold list-none text-ink-900">
+            {f.q}
+            <span class="grid h-7 w-7 place-items-center rounded-full bg-cream ring-1 ring-ink-900/5 text-brand-600 transition group-open:rotate-45">+</span>
+          </summary>
+          <p class="mt-3 text-ink-500 text-sm leading-relaxed">{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

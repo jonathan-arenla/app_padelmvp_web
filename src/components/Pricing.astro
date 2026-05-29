@@ -1,0 +1,135 @@
+---
+const plans = [
+  {
+    name: 'Player',
+    target: 'Para jugadores',
+    price: 'Gratis',
+    period: 'siempre',
+    desc: 'Para empezar a jugar, reservar y unirte a la comunidad.',
+    features: [
+      'Reservas en clubs PadelMVP',
+      'Partidos abiertos por nivel',
+      'Sistema MVP y ranking',
+      'Wallet, Bizum & Apple/Google Pay',
+      'Chat de grupo y comunidad',
+    ],
+    cta: 'Descargar app',
+    highlight: false,
+    badge: null,
+  },
+  {
+    name: 'Player Pro',
+    target: 'Para jugadores',
+    price: '3,99€',
+    period: '/ mes',
+    desc: 'Para padeleros que viven el padel cada semana.',
+    features: [
+      'Todo lo de Player',
+      'Stats avanzadas y vídeos del partido',
+      'Descuentos exclusivos en clubs',
+      '0% comisión en reservas',
+      'Soporte prioritario',
+    ],
+    cta: 'Probar 14 días gratis',
+    highlight: false,
+    badge: 'Más popular',
+  },
+  {
+    name: 'Club',
+    target: 'Para clubs',
+    price: '49€',
+    period: '/ mes',
+    desc: 'Gestiona hasta 4 pistas, cobros y comunidad.',
+    features: [
+      'Calendario y reservas ilimitadas',
+      'Cobros + wallet integrada',
+      'Reservas privadas para socios',
+      'Dashboard básico y reports',
+      'App en la marca del club',
+    ],
+    cta: 'Empezar',
+    highlight: true,
+    badge: 'Top clubs',
+  },
+  {
+    name: 'Club Pro',
+    target: 'Para clubs',
+    price: '129€',
+    period: '/ mes',
+    desc: 'Multi-sede, torneos, ligas, POS y reports avanzados.',
+    features: [
+      'Todo lo de Club',
+      'Multi-sede ilimitada',
+      'Torneos, ligas y clases',
+      'Reports avanzados + exportables',
+      'POS y membresías',
+      'API y soporte 4h',
+    ],
+    cta: 'Hablar con ventas',
+    highlight: false,
+    badge: null,
+  },
+];
+
+const comparison = [
+  ['Comisión por reserva (jugadores)', '0%', 'hasta 6%'],
+  ['Plan Club desde', '49€/mes', '~89€/mes'],
+  ['Multi-sede sin extra', 'Sí', 'No'],
+  ['MVP + comunidad in-app', 'Sí', 'Limitado'],
+  ['App con marca del club', 'Desde Club', 'Solo plan top'],
+];
+---
+<section id="pricing" class="relative py-32 overflow-hidden">
+  <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-coral-300 to-transparent"></div>
+  <div class="container-x">
+    <div class="max-w-3xl mx-auto text-center">
+      <p class="text-xs uppercase tracking-[0.3em] text-coral-600 font-bold">Precios</p>
+      <h2 class="mt-3 font-display text-4xl md:text-5xl font-bold">Más simple. <span class="text-gradient-brand">Más barato.</span></h2>
+      <p class="mt-4 text-ink-500 text-lg">Inspirados en Playtomic, pero con planes <strong class="text-ink-900">hasta un 45% más baratos</strong> y sin pegas. Sin permanencias absurdas. 14 días de prueba en cualquier plan.</p>
+    </div>
+
+    <div class="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      {plans.map(p => (
+        <div class={`relative flex flex-col rounded-3xl p-7 transition ${p.highlight ? 'bg-white ring-2 ring-brand-600 shadow-glow' : 'bg-white ring-1 ring-ink-900/5 shadow-card'}`}>
+          {p.badge && (
+            <span class={`absolute -top-3 left-7 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white ${p.highlight ? 'bg-brand-600' : 'bg-coral-500'}`}>{p.badge}</span>
+          )}
+          <p class="text-xs uppercase tracking-widest text-ink-500 font-bold">{p.target}</p>
+          <h3 class="mt-1 font-display text-2xl font-bold text-ink-900">{p.name}</h3>
+          <p class="mt-3 text-sm text-ink-500 min-h-[42px]">{p.desc}</p>
+          <div class="mt-4 flex items-end gap-1">
+            <span class="font-display text-4xl font-bold text-ink-900">{p.price}</span>
+            <span class="pb-1 text-sm text-ink-500">{p.period}</span>
+          </div>
+          <ul class="mt-6 space-y-2.5 text-sm flex-1">
+            {p.features.map(f => (
+              <li class="flex gap-2 text-ink-700">
+                <svg class="h-5 w-5 shrink-0 text-brand-600" viewBox="0 0 20 20" fill="currentColor"><path d="M16.7 5.3a1 1 0 010 1.4l-7.5 7.5a1 1 0 01-1.4 0L3.3 9.7a1 1 0 011.4-1.4l3.8 3.8 6.8-6.8a1 1 0 011.4 0z"/></svg>
+                {f}
+              </li>
+            ))}
+          </ul>
+          <a href="#demo" class={`mt-6 ${p.highlight ? 'btn-primary' : 'btn-ghost'} w-full`}>{p.cta}</a>
+        </div>
+      ))}
+    </div>
+
+    <!-- Comparison vs Playtomic -->
+    <div class="mt-20 bg-white rounded-3xl p-7 max-w-4xl mx-auto ring-1 ring-ink-900/5 shadow-card">
+      <p class="text-xs uppercase tracking-widest text-brand-600 font-bold mb-4">Comparativa rápida</p>
+      <div class="grid grid-cols-3 text-sm">
+        <div class="font-semibold text-ink-500 pb-3 border-b border-ink-900/10">Característica</div>
+        <div class="font-bold text-brand-600 pb-3 border-b border-ink-900/10">PadelMVP</div>
+        <div class="font-semibold text-ink-500 pb-3 border-b border-ink-900/10">Playtomic*</div>
+        {comparison.map(row => (
+          <>
+            <div class="py-3 border-b border-ink-900/5 text-ink-900">{row[0]}</div>
+            <div class="py-3 border-b border-ink-900/5 font-semibold text-brand-600">{row[1]}</div>
+            <div class="py-3 border-b border-ink-900/5 text-ink-500">{row[2]}</div>
+          </>
+        ))}
+      </div>
+      <p class="mt-3 text-[11px] text-ink-300">* Precios y características estimadas según información pública de Playtomic. Comparativa orientativa.</p>
+    </div>
+  </div>
+</section>
