@@ -1,57 +1,5 @@
 ---
-const tiers = [
-  {
-    name: 'Bronce',
-    range: '0 – 39',
-    icon: '🥉',
-    color: 'from-amber-800 to-amber-600',
-    glow: 'rgba(180,83,9,0.4)',
-    textColor: '#d97706',
-    desc: 'Estás empezando. Cada partido te enseña algo nuevo.',
-    perks: ['Acceso a partidos abiertos', 'Badge de iniciación'],
-  },
-  {
-    name: 'Plata',
-    range: '40 – 59',
-    icon: '🥈',
-    color: 'from-slate-500 to-slate-400',
-    glow: 'rgba(100,116,139,0.4)',
-    textColor: '#64748b',
-    desc: 'Ya controlas. El nivel empieza a estar en tu cabeza.',
-    perks: ['Partidos por nivel validado', 'Stats básicas de juego'],
-  },
-  {
-    name: 'Oro',
-    range: '60 – 74',
-    icon: '🥇',
-    color: 'from-yellow-500 to-amber-400',
-    glow: 'rgba(234,179,8,0.5)',
-    textColor: '#ca8a04',
-    desc: 'Jugador consolidado. La comunidad te conoce y respeta.',
-    perks: ['Ranking visible en el club', 'Acceso a ligas avanzadas'],
-    current: true,
-  },
-  {
-    name: 'Diamante',
-    range: '75 – 89',
-    icon: '💎',
-    color: 'from-brand-500 to-electric-500',
-    glow: 'rgba(47,95,255,0.5)',
-    textColor: '#2f5fff',
-    desc: 'Élite local. Buscas rivales a tu altura, pocos los hay.',
-    perks: ['Featured en el club', 'Acceso a torneos premium'],
-  },
-  {
-    name: 'Élite MVP',
-    range: '90 – 100',
-    icon: '👑',
-    color: 'from-purple-600 to-pink-500',
-    glow: 'rgba(147,51,234,0.5)',
-    textColor: '#9333ea',
-    desc: 'Top 1%. El juego a este nivel es una religión.',
-    perks: ['Badge exclusivo de Élite', 'Invitaciones a eventos top'],
-  },
-];
+import { PROFILE_TIERS, RANK_PALETTE } from '../lib/ranks';
 
 const pointSources = [
   { action: 'Ganar partido (vs igual nivel)', pts: '+10 a +20', icon: '🏆', color: 'text-court-500' },
@@ -80,12 +28,10 @@ const coinSources = [
   <div class="absolute inset-0 grid-pattern"></div>
   <div class="absolute top-0 left-1/2 -translate-x-1/2 h-px w-2/3" style="background: linear-gradient(90deg, transparent, rgba(99,102,241,0.4), transparent)"></div>
 
-  <!-- Glow orbs -->
   <div class="absolute top-20 left-20 h-96 w-96 rounded-full blur-3xl opacity-20" style="background: radial-gradient(circle, #6366f1, transparent)"></div>
   <div class="absolute bottom-20 right-20 h-64 w-64 rounded-full blur-3xl opacity-15" style="background: radial-gradient(circle, #f59e0b, transparent)"></div>
 
   <div class="container-x relative">
-    <!-- Header -->
     <div class="text-center max-w-3xl mx-auto mb-16">
       <p class="badge badge-dark mb-4">Sistema de puntuación</p>
       <h2 class="font-display text-4xl md:text-5xl font-bold text-white">
@@ -97,44 +43,56 @@ const coinSources = [
       </p>
     </div>
 
-    <!-- Ranking tiers -->
-    <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-5 mb-16">
-      {tiers.map(t => (
-        <div class={`relative rounded-2xl border transition-all duration-300 hover:-translate-y-1 overflow-hidden ${t.current ? 'border-white/20' : 'border-white/8'}`}
-             style={t.current ? `box-shadow: 0 0 0 1px rgba(255,255,255,0.15), 0 20px 60px -15px ${t.glow}` : `background: rgba(255,255,255,0.04)`}>
-          {t.current && (
-            <div class="absolute top-0 left-0 right-0 h-0.5" style={`background: linear-gradient(90deg, transparent, ${t.textColor}, transparent)`}></div>
-          )}
-          {t.current && (
-            <div class="absolute top-3 right-3">
-              <span class="text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full" style={`background: ${t.textColor}20; color: ${t.textColor}`}>Tú aquí</span>
-            </div>
-          )}
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 mb-16">
+      {PROFILE_TIERS.map(t => {
+        const palette = RANK_PALETTE[t.name];
+        return (
+          <div
+            class={`relative rounded-2xl border transition-all duration-300 hover:-translate-y-1 overflow-hidden ${t.current ? 'border-white/20' : 'border-white/8'}`}
+            style={`
+              border-left: 3px solid ${palette.main};
+              background: linear-gradient(135deg, ${palette.main}18, ${palette.dark}08);
+              ${t.current ? `box-shadow: 0 0 0 1px rgba(255,255,255,0.12), 0 20px 60px -15px ${palette.main}40` : ''}
+            `}
+          >
+            {t.current && (
+              <div class="absolute top-3 right-3">
+                <span
+                  class="text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full"
+                  style={`background: ${palette.main}25; color: ${palette.main}`}
+                >
+                  Tú aquí
+                </span>
+              </div>
+            )}
 
-          <div class="p-5">
-            <div class={`h-12 w-12 rounded-xl bg-gradient-to-br ${t.color} grid place-items-center text-xl shadow-lg mb-4`}
-                 style={`box-shadow: 0 8px 24px -8px ${t.glow}`}>
-              {t.icon}
+            <div class="p-5">
+              <div class="flex items-center gap-2.5 mb-2">
+                <span class="text-2xl leading-none" aria-hidden="true">{t.icon}</span>
+                <h3 class="font-display text-xl font-bold text-white">{t.name}</h3>
+              </div>
+              <span
+                class="inline-block text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded"
+                style={`background: ${palette.main}; color: #0F0F11`}
+              >
+                {t.range} pts
+              </span>
+              <p class="text-white/45 text-xs mt-3 leading-relaxed">{t.desc}</p>
+              <ul class="mt-3 space-y-1.5">
+                {t.perks.map(p => (
+                  <li class="flex items-center gap-2 text-white/60 text-[11px]">
+                    <span class="h-1 w-1 rounded-full shrink-0" style={`background: ${palette.main}`}></span>
+                    {p}
+                  </li>
+                ))}
+              </ul>
             </div>
-            <h3 class="font-display text-xl font-bold text-white">{t.name}</h3>
-            <p class="text-xs font-bold mt-0.5" style={`color: ${t.textColor}`}>{t.range} pts</p>
-            <p class="text-white/45 text-xs mt-3 leading-relaxed">{t.desc}</p>
-            <ul class="mt-3 space-y-1.5">
-              {t.perks.map(p => (
-                <li class="flex items-center gap-2 text-white/60 text-[11px]">
-                  <span class="h-1 w-1 rounded-full bg-white/40 shrink-0"></span>
-                  {p}
-                </li>
-              ))}
-            </ul>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
 
-    <!-- Points system + Coins system -->
     <div class="grid lg:grid-cols-2 gap-6">
-      <!-- MVP Rating points -->
       <div class="rounded-2xl border border-white/10 bg-white/4 p-7 backdrop-blur-sm">
         <div class="flex items-center gap-3 mb-6">
           <div class="h-10 w-10 rounded-xl bg-brand-500/20 grid place-items-center text-xl">📊</div>
@@ -156,7 +114,6 @@ const coinSources = [
         </div>
       </div>
 
-      <!-- MVP Coins -->
       <div class="rounded-2xl border border-white/10 bg-white/4 p-7 backdrop-blur-sm">
         <div class="flex items-center gap-3 mb-6">
           <div class="h-10 w-10 rounded-xl bg-gold-500/20 grid place-items-center text-xl">🪙</div>
