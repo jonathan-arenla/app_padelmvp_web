@@ -1,0 +1,389 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const reservasFeatures = [
+  { icon: '📅', title: 'Calendario drag & drop', desc: 'Vista de pistas en tiempo real. Bloqueos, mantenimientos y multi-sede desde un panel.' },
+  { icon: '⚡', title: 'Reservas 24/7 sin llamadas', desc: 'Los jugadores reservan directamente desde la app. Tú solo ves el calendario lleno.' },
+  { icon: '💳', title: 'Cobro automático', desc: 'Bizum, tarjeta, Apple/Google Pay y wallet. Sin gestión manual, sin impagos.' },
+  { icon: '🔔', title: 'No-shows eliminados', desc: 'Recordatorios push y SMS automáticos. Política de cancelación configurable. –40% de no-shows.' },
+  { icon: '🎯', title: 'Reservas privadas', desc: 'Bloquea pistas para clases, ligas internas o eventos exclusivos de socios.' },
+  { icon: '📈', title: 'Tarifas dinámicas', desc: 'Precio diferente por hora punta, tipo de socio o día de la semana. Maximiza ingresos.' },
+];
+
+const appFeatures = [
+  { icon: '🏷️', title: 'App con tu marca', desc: 'Tu logo, tus colores, tu nombre. En App Store y Google Play. La publicamos por ti.', highlight: true },
+  { icon: '🏆', title: 'Ligas y torneos del club', desc: 'Crea competiciones internas. Cuadros, rankings propios, premios. La comunidad vive el club.' },
+  { icon: '👥', title: 'Red social de socios', desc: 'Feed de publicaciones, chat de grupo y ranking interno. Retención real, no solo reservas.' },
+  { icon: '🎓', title: 'Clases y coaches', desc: 'Agenda clases, asigna coaches y gestiona cobros desde el mismo panel.' },
+  { icon: '🛒', title: 'Punto de venta (POS)', desc: 'Material, alquiler de palas, bebidas. Cobro desde la app e inventario en tiempo real.' },
+  { icon: '📊', title: 'Dashboard y analytics', desc: 'Ocupación, ingresos, socios en riesgo. Heatmaps, reports automáticos en PDF.' },
+];
+
+const plans = [
+  {
+    name: 'Club Starter',
+    price: '49€',
+    period: '/ mes',
+    desc: 'Para clubs de hasta 6 pistas. Digitaliza reservas y cobros.',
+    features: ['Hasta 6 pistas', 'Reservas 24/7', 'Cobros integrados', 'Dashboard básico', 'Reports mensuales', 'Soporte email'],
+    cta: 'Empezar gratis 14 días',
+    highlight: false,
+    badge: null,
+  },
+  {
+    name: 'Club Pro',
+    price: '129€',
+    period: '/ mes',
+    desc: 'La solución completa. App propia, ligas y comunidad activa.',
+    features: ['Pistas ilimitadas', 'App con TU marca', 'Ligas y torneos', 'POS integrado', 'Membresías automáticas', 'Reports avanzados', 'Soporte 4h'],
+    cta: 'Ver demo',
+    highlight: true,
+    badge: 'Más elegido',
+  },
+  {
+    name: 'Multi-sede',
+    price: 'A medida',
+    period: '',
+    desc: 'Para grupos y franquicias. Panel central, marca 100% propia.',
+    features: ['Todo de Club Pro', 'Sedes ilimitadas', 'Panel centralizado', 'Marca 100% propia', 'API integración', 'Account manager', 'Onboarding presencial'],
+    cta: 'Hablar con ventas',
+    highlight: false,
+    badge: 'Empresa',
+  },
+];
+
+const comparison = [
+  { feature: 'Reservas online 24/7', padelmvp: '✓', playtomic: '✓', others: 'Básico' },
+  { feature: 'Comisión por reserva', padelmvp: '0%', playtomic: 'hasta 6%', others: 'hasta 8%' },
+  { feature: 'App con marca del club', padelmvp: 'Desde Club Pro', playtomic: 'Solo plan top', others: '—' },
+  { feature: 'Ligas y torneos internos', padelmvp: '✓', playtomic: 'Extra', others: '—' },
+  { feature: 'Red social de socios', padelmvp: '✓', playtomic: '—', others: '—' },
+  { feature: 'Cobros Bizum + wallet', padelmvp: '✓', playtomic: 'Limitado', others: '—' },
+  { feature: 'Precio desde', padelmvp: '49€/mes', playtomic: '~89€/mes', others: '~120€/mes' },
+  { feature: 'Permanencias', padelmvp: 'Ninguna', playtomic: 'Sí', others: 'Sí' },
+];
+
+const faqs = [
+  { q: '¿Cuánto tarda la puesta en marcha?', a: 'Menos de 48 horas. El equipo de PadelMVP hace el onboarding contigo y configura pistas, horarios y tarifas.' },
+  { q: '¿Hay permanencias?', a: 'No. Cancelas cuando quieres. Los primeros 14 días son gratis y sin tarjeta de crédito.' },
+  { q: '¿PadelMVP cobra comisión por cada reserva?', a: '0% de comisión por reserva para los clubs. Solo el plan mensual fijo. Sin sorpresas.' },
+  { q: '¿Puedo tener mi propia app en App Store?', a: 'Sí. En el plan Club Pro y Multi-sede publicamos tu app con tu nombre, logo y colores.' },
+  { q: '¿Puedo migrar mis socios de Playtomic u otro sistema?', a: 'Sí. Importamos tu base de datos desde Excel o exportación de Playtomic. Sin perder historial.' },
+  { q: '¿Qué pasa con mis reservas existentes?', a: 'Se pueden migrar o convivir durante la transición. El equipo te acompaña en cada paso.' },
+];
+---
+
+<Layout
+  title="PadelMVP para Clubs — Reservas, app propia y gestión integral"
+  description="PadelMVP Manager: la plataforma más completa para clubs de padel. 0% comisión, app con tu marca, ligas, dashboard y comunidad activa. Desde 49€/mes."
+>
+  <Navbar />
+  <main>
+
+    <!-- HERO CLUBS -->
+    <section class="relative min-h-screen flex flex-col overflow-hidden bg-night-950" style="margin-top: -64px; padding-top: 64px;">
+      <div class="absolute inset-0 grid-pattern"></div>
+      <div class="absolute inset-0" style="background: radial-gradient(ellipse 70% 50% at 80% 30%, rgba(99,102,241,0.15) 0%, transparent 70%)"></div>
+      <div class="absolute inset-0" style="background: radial-gradient(ellipse 50% 40% at 20% 70%, rgba(47,95,255,0.10) 0%, transparent 60%)"></div>
+
+      <div class="container-x relative flex-1 flex items-center py-20">
+        <div class="grid lg:grid-cols-2 gap-14 items-center w-full">
+          <div class="text-white">
+            <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/8 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-white/60 backdrop-blur-sm mb-8">
+              ✨ PadelMVP Manager
+            </div>
+            <h1 class="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.04] tracking-tight">
+              Tu club en<br/>
+              <span class="text-gradient-brand">piloto automático.</span>
+            </h1>
+            <p class="mt-6 text-xl text-white/55 max-w-lg leading-relaxed">
+              Gestiona reservas, cobros, socios, ligas y comunidad desde un único panel. Conectado a la app que ya usan miles de jugadores. <strong class="text-white">Sin comisiones. Sin permanencias.</strong>
+            </p>
+            <div class="mt-10 flex flex-wrap gap-3">
+              <a href="#precios" class="btn-primary text-base">Ver planes y precios</a>
+              <a href="mailto:clubs@padelmvp.app" class="btn-ghost-dark text-base">Pedir demo →</a>
+            </div>
+
+            <!-- Stats -->
+            <div class="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-4">
+              {[
+                { v: '+340', l: 'Clubs activos' },
+                { v: '0%', l: 'Comisión reserva' },
+                { v: '48h', l: 'Setup garantizado' },
+                { v: '4.9★', l: 'Valoración clubs' },
+              ].map(s => (
+                <div class="rounded-2xl border border-white/8 bg-white/5 p-4 text-center backdrop-blur-sm">
+                  <p class="font-display text-2xl font-bold text-white">{s.v}</p>
+                  <p class="text-white/40 text-xs mt-1">{s.l}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- Manager dashboard mockup -->
+          <div class="relative animate-float">
+            <div class="absolute -inset-8 rounded-full blur-3xl opacity-20" style="background: radial-gradient(circle, #6366f1, transparent)"></div>
+            <div class="relative rounded-3xl border border-white/10 bg-night-800 p-5 shadow-card-dark">
+              <!-- Browser bar -->
+              <div class="flex items-center gap-2 mb-4">
+                <div class="flex gap-1.5"><div class="h-2.5 w-2.5 rounded-full bg-red-500/60"></div><div class="h-2.5 w-2.5 rounded-full bg-yellow-500/60"></div><div class="h-2.5 w-2.5 rounded-full bg-court-500/60"></div></div>
+                <p class="text-white/25 text-xs ml-2">manager.padelmvp.app · Club Padel Premium</p>
+                <span class="ml-auto text-[9px] font-bold uppercase tracking-wider bg-court-500/20 text-court-400 px-2 py-0.5 rounded-full ring-1 ring-court-500/30">● Live</span>
+              </div>
+
+              <!-- KPI row -->
+              <div class="grid grid-cols-3 gap-3 mb-4">
+                {[
+                  { l: 'Ocupación hoy', v: '87%', d: '+12%', c: 'text-court-400' },
+                  { l: 'Facturación', v: '2.847€', d: '+8%', c: 'text-brand-400' },
+                  { l: 'Socios activos', v: '412', d: '+18 nuevos', c: 'text-gold-400' },
+                ].map(k => (
+                  <div class="rounded-xl bg-night-900 p-3 ring-1 ring-white/6">
+                    <p class="text-white/35 text-[9px] uppercase tracking-wider">{k.l}</p>
+                    <p class="text-white font-display text-xl font-bold mt-0.5">{k.v}</p>
+                    <p class={`text-[9px] font-semibold ${k.c}`}>{k.d}</p>
+                  </div>
+                ))}
+              </div>
+
+              <!-- Courts grid -->
+              <div class="rounded-xl bg-night-900 p-4 ring-1 ring-white/6 mb-3">
+                <div class="flex justify-between items-center mb-3">
+                  <p class="text-white text-xs font-semibold">Pistas · Hoy 17:00–22:00</p>
+                  <div class="flex gap-2 text-[9px]">
+                    <span class="flex items-center gap-1 text-white/40"><span class="h-2 w-2 rounded-sm bg-brand-500"></span>Reservada</span>
+                    <span class="flex items-center gap-1 text-white/40"><span class="h-2 w-2 rounded-sm bg-coral-500"></span>Club</span>
+                  </div>
+                </div>
+                {['Pista 1','Pista 2','Pista 3','Pista 4'].map((p, i) => (
+                  <div class="flex items-center gap-2 mb-1.5">
+                    <span class="text-white/35 text-[9px] w-12 shrink-0">{p}</span>
+                    <div class="flex-1 grid grid-cols-10 gap-0.5 h-5">
+                      {Array(10).fill(0).map((_, j) => {
+                        const filled = (i * 3 + j * 2) % 4 !== 0;
+                        const club = (i + j) % 5 === 0;
+                        return <div class={`rounded-sm ${filled ? (club ? 'bg-coral-500/70' : 'bg-brand-500') : 'bg-white/8'}`}></div>;
+                      })}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <!-- Revenue chart -->
+              <div class="rounded-xl bg-night-900 p-4 ring-1 ring-white/6">
+                <div class="flex justify-between items-center mb-2">
+                  <p class="text-white text-xs font-semibold">Ingresos · 7 días</p>
+                  <p class="text-court-400 text-[9px] font-bold">+14.5%</p>
+                </div>
+                <svg viewBox="0 0 280 55" class="w-full h-12">
+                  <defs>
+                    <linearGradient id="revGrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#2f5fff" stop-opacity="0.4"/>
+                      <stop offset="100%" stop-color="#2f5fff" stop-opacity="0"/>
+                    </linearGradient>
+                  </defs>
+                  <path d="M0 40 L40 34 L80 37 L120 22 L160 27 L200 14 L240 18 L280 6 L280 55 L0 55 Z" fill="url(#revGrad)"/>
+                  <path d="M0 40 L40 34 L80 37 L120 22 L160 27 L200 14 L240 18 L280 6" fill="none" stroke="#2f5fff" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+
+              <!-- Floating badge -->
+              <div class="absolute -bottom-3 -left-3 bg-white rounded-2xl px-3 py-2 shadow-xl ring-1 ring-ink-900/8 animate-float-mid">
+                <p class="text-[9px] font-bold uppercase tracking-wider text-court-600">Cobro recibido</p>
+                <p class="text-sm font-bold text-ink-900">+28.00 € · Pista 4 ✓</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom marquee -->
+      <div class="border-t border-white/8 bg-night-900/80 overflow-hidden py-4">
+        <div class="flex gap-10 whitespace-nowrap animate-marquee text-white/35 font-display font-semibold uppercase tracking-widest text-xs">
+          {Array(2).fill(0).map(() => (
+            <div class="flex gap-10 shrink-0">
+              {['· 0% comisión por reserva','· App con tu marca','· Setup en 48h','· Sin permanencias','· Ligas y torneos internos','· Dashboard en tiempo real','· Cobros automáticos','· +340 clubs confían en nosotros'].map(t => (
+                <span>{t}</span>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- RESERVAS DE PISTAS -->
+    <section id="reservas" class="relative py-24 bg-surface">
+      <div class="absolute inset-0 grid-pattern-light opacity-60"></div>
+      <div class="container-x relative">
+        <div class="max-w-3xl mb-14">
+          <p class="badge badge-brand mb-4">Reservas de pistas</p>
+          <h2 class="font-display text-4xl md:text-5xl font-bold text-ink-900">
+            Tu calendario lleno.<br/>
+            <span class="text-gradient-brand">Sin tocar el teléfono.</span>
+          </h2>
+          <p class="mt-4 text-ink-500 text-lg">
+            Olvida el WhatsApp, el Excel y las llamadas perdidas. Las reservas se gestionan solas, se cobran solas y se recuerdan solas.
+          </p>
+        </div>
+
+        <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {reservasFeatures.map(f => (
+            <div class="feature-card group">
+              <div class="h-12 w-12 rounded-2xl bg-brand-50 ring-1 ring-brand-200 grid place-items-center text-2xl mb-5">{f.icon}</div>
+              <h3 class="font-display text-xl font-bold text-ink-900 mb-2">{f.title}</h3>
+              <p class="text-ink-500 leading-relaxed">{f.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- APP PARA TU CLUB -->
+    <section id="app-clubs" class="relative py-24 bg-night-950 overflow-hidden">
+      <div class="absolute inset-0 grid-pattern"></div>
+      <div class="absolute -top-20 right-0 h-96 w-96 rounded-full blur-3xl opacity-15" style="background: radial-gradient(circle, #f97316, transparent)"></div>
+
+      <div class="container-x relative">
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <p class="badge badge-dark mb-4">App específica para tu club</p>
+          <h2 class="font-display text-4xl md:text-5xl font-bold text-white">
+            Tu club tiene su propia app.<br/>
+            <span class="text-gradient-brand">Con tu nombre. Con tu marca.</span>
+          </h2>
+          <p class="mt-4 text-white/50 text-lg">
+            Tus socios descargan la app de <strong class="text-white">tu club</strong> — no la de PadelMVP. Tu logo, tus colores, tus torneos. En App Store y Google Play.
+          </p>
+        </div>
+
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {appFeatures.map(f => (
+            <div class={`rounded-2xl p-6 border transition-all hover:-translate-y-1 ${f.highlight ? 'border-brand-500/40 bg-brand-500/10' : 'border-white/8 bg-white/4'}`}>
+              <div class={`h-12 w-12 rounded-xl grid place-items-center text-2xl mb-4 ${f.highlight ? 'bg-brand-500 shadow-glow-sm' : 'bg-white/8'}`}>{f.icon}</div>
+              <h3 class="font-display font-bold text-white mb-2">{f.title}</h3>
+              <p class="text-white/50 text-sm leading-relaxed">{f.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="precios" class="relative py-24 bg-white">
+      <div class="container-x">
+        <div class="text-center max-w-2xl mx-auto mb-14">
+          <p class="badge badge-brand mb-4">Planes y costes</p>
+          <h2 class="font-display text-4xl md:text-5xl font-bold text-ink-900">
+            Sin comisiones.<br/>
+            <span class="text-gradient-brand">Sin permanencias. Sin sorpresas.</span>
+          </h2>
+          <p class="mt-4 text-ink-500 text-lg">14 días gratis en cualquier plan. Sin tarjeta de crédito.</p>
+        </div>
+
+        <div class="grid gap-6 lg:grid-cols-3">
+          {plans.map(p => (
+            <div class={`relative flex flex-col rounded-3xl p-8 transition-all hover:-translate-y-1 ${p.highlight ? 'bg-night-900 ring-2 ring-brand-500 shadow-glow' : 'bg-white ring-1 ring-ink-900/8 shadow-card hover:shadow-xl'}`}>
+              {p.badge && (
+                <span class={`absolute -top-3 left-7 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white ${p.highlight ? 'bg-brand-500' : 'bg-coral-500'}`}>{p.badge}</span>
+              )}
+              <h3 class={`font-display text-2xl font-bold mb-2 ${p.highlight ? 'text-white' : 'text-ink-900'}`}>{p.name}</h3>
+              <p class={`text-sm mb-5 ${p.highlight ? 'text-white/50' : 'text-ink-500'}`}>{p.desc}</p>
+              <div class="flex items-end gap-1 mb-6">
+                <span class={`font-display text-4xl font-bold ${p.highlight ? 'text-white' : 'text-ink-900'}`}>{p.price}</span>
+                <span class={`pb-1 text-sm ${p.highlight ? 'text-white/40' : 'text-ink-400'}`}>{p.period}</span>
+              </div>
+              <ul class="space-y-2.5 flex-1">
+                {p.features.map(f => (
+                  <li class={`flex gap-2.5 text-sm ${p.highlight ? 'text-white/70' : 'text-ink-600'}`}>
+                    <svg class={`h-5 w-5 shrink-0 mt-0.5 ${p.highlight ? 'text-brand-400' : 'text-brand-500'}`} viewBox="0 0 20 20" fill="currentColor">
+                      <path d="M16.7 5.3a1 1 0 010 1.4l-7.5 7.5a1 1 0 01-1.4 0L3.3 9.7a1 1 0 011.4-1.4l3.8 3.8 6.8-6.8a1 1 0 011.4 0z"/>
+                    </svg>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+              <a href={p.name === 'Multi-sede' ? 'mailto:clubs@padelmvp.app' : '#'} class={`mt-8 w-full text-center py-3 rounded-xl font-bold text-sm transition-all ${p.highlight ? 'bg-brand-500 text-white hover:bg-brand-600 shadow-glow' : 'border border-ink-900/15 text-ink-900 hover:border-brand-500 hover:text-brand-600'}`}>
+                {p.cta}
+              </a>
+            </div>
+          ))}
+        </div>
+
+        <!-- Comparison table -->
+        <div class="mt-16 rounded-3xl bg-surface ring-1 ring-ink-900/6 overflow-hidden">
+          <div class="px-7 py-5 border-b border-ink-900/6">
+            <p class="font-display font-bold text-ink-900">PadelMVP vs Competencia</p>
+            <p class="text-sm text-ink-500">Datos públicos orientativos</p>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="border-b border-ink-900/6">
+                  <th class="text-left font-semibold text-ink-500 px-7 py-4">Característica</th>
+                  <th class="font-bold text-brand-600 px-6 py-4 text-center">PadelMVP</th>
+                  <th class="font-semibold text-ink-400 px-6 py-4 text-center">Playtomic*</th>
+                  <th class="font-semibold text-ink-400 px-6 py-4 text-center">Otros*</th>
+                </tr>
+              </thead>
+              <tbody>
+                {comparison.map((row, i) => (
+                  <tr class={`border-b border-ink-900/5 ${i % 2 === 0 ? '' : 'bg-white'}`}>
+                    <td class="px-7 py-3.5 text-ink-900">{row.feature}</td>
+                    <td class="px-6 py-3.5 text-center font-semibold text-brand-600">{row.padelmvp}</td>
+                    <td class="px-6 py-3.5 text-center text-ink-400">{row.playtomic}</td>
+                    <td class="px-6 py-3.5 text-center text-ink-400">{row.others}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p class="px-7 py-4 text-[11px] text-ink-300">* Datos estimados según información pública. Comparativa orientativa, puede variar.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="relative py-20 bg-surface">
+      <div class="container-x max-w-3xl mx-auto">
+        <div class="text-center mb-12">
+          <p class="badge badge-brand mb-3">FAQ</p>
+          <h2 class="font-display text-3xl md:text-4xl font-bold text-ink-900">Preguntas frecuentes</h2>
+        </div>
+        <div class="space-y-3">
+          {faqs.map(f => (
+            <details class="group rounded-2xl bg-white ring-1 ring-ink-900/6 shadow-card overflow-hidden">
+              <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer font-semibold text-ink-900 list-none">
+                {f.q}
+                <svg class="h-5 w-5 shrink-0 text-ink-400 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M5.3 7.3a1 1 0 011.4 0L10 10.6l3.3-3.3a1 1 0 111.4 1.4l-4 4a1 1 0 01-1.4 0l-4-4a1 1 0 010-1.4z"/>
+                </svg>
+              </summary>
+              <div class="px-6 pb-6 text-ink-500 leading-relaxed border-t border-ink-900/6 pt-4">{f.a}</div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA CLUBS -->
+    <section class="relative py-24 bg-night-950 overflow-hidden">
+      <div class="absolute inset-0 grid-pattern"></div>
+      <div class="absolute inset-0" style="background: radial-gradient(ellipse 70% 60% at 50% 100%, rgba(47,95,255,0.15) 0%, transparent 70%)"></div>
+      <div class="container-x relative text-center">
+        <h2 class="font-display text-4xl md:text-5xl font-bold text-white max-w-2xl mx-auto">
+          ¿Listo para llevar tu club al siguiente nivel?
+        </h2>
+        <p class="mt-5 text-white/50 text-xl max-w-xl mx-auto">
+          14 días gratis. Sin tarjeta. Onboarding en menos de 48 horas.
+        </p>
+        <div class="mt-10 flex flex-wrap gap-4 justify-center">
+          <a href="#precios" class="btn-primary text-base">Empezar gratis →</a>
+          <a href="mailto:clubs@padelmvp.app" class="btn-ghost-dark text-base">Pedir demo personalizada</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>

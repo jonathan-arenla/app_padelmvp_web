@@ -1,5 +1,23 @@
 services:
-  # Production: static build served by nginx
+  # ─── Local dev (nginx sirve el dist/ del host — no rebuild necesario) ───────
+  # Uso: npm run build && docker compose up local -d
+  local:
+    image: nginx:1.27-alpine
+    container_name: padelmvp-local
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - ./dist:/usr/share/nginx/html:ro
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1/healthz"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+
+  # ─── Production (imagen Docker self-contained, puerto 8080) ──────────────────
+  # Uso: docker compose up web -d
   web:
     build:
       context: .
@@ -9,15 +27,14 @@ services:
     restart: unless-stopped
     ports:
       - "8080:80"
-    profiles: ["", "prod"]
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://127.0.0.1/healthz"]
       interval: 30s
       timeout: 5s
       retries: 3
 
-  # Development: Astro dev server with hot reload
-  # Run with:  docker compose --profile dev up
+  # ─── Dev server Astro (hot reload) ───────────────────────────────────────────
+  # Uso: docker compose up dev
   dev:
     build:
       context: .
@@ -32,5 +49,4 @@ services:
     environment:
       - NODE_ENV=development
       - CHOKIDAR_USEPOLLING=true
-    profiles: ["dev"]
     command: npm run dev -- --host 0.0.0.0

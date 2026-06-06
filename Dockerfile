@@ -11,6 +11,18 @@ RUN --mount=type=cache,target=/root/.npm \
 
 # Copy sources & build static site
 COPY . .
+# Patch Astro's vite logger to fix Node 22 compatibility issue
+RUN node -e "\
+const fs = require('fs');\
+const p = 'node_modules/astro/dist/core/logger/vite.js';\
+let c = fs.readFileSync(p, 'utf-8');\
+c = c.replace(\
+  'if (msg.includes(\"Error when evaluating SSR module\") || msg.includes(\"Pre-transform error:\"))',\
+  'if (typeof msg === \"string\" && (msg.includes(\"Error when evaluating SSR module\") || msg.includes(\"Pre-transform error:\")))',\
+);\
+fs.writeFileSync(p, c);\
+console.log('Patched vite logger for Node 22 compatibility');\
+"
 RUN npm run build
 
 # ---------- Stage 2: runtime (nginx) ----------

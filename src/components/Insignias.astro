@@ -1,0 +1,189 @@
+---
+const rarities = [
+  { name: 'Común', color: '#6b7280', bg: 'rgba(107,114,128,0.15)', desc: '1 partido · voto básico' },
+  { name: 'Raro', color: '#3b82f6', bg: 'rgba(59,130,246,0.15)', desc: '3 partidos · patrón consistente' },
+  { name: 'Épico', color: '#9333ea', bg: 'rgba(147,51,234,0.15)', desc: 'IA confirma + 3 votos' },
+  { name: 'Legendario', color: '#f59e0b', bg: 'rgba(245,158,11,0.15)', desc: 'Top 10% del club' },
+  { name: 'Platino ✦', color: '#e2e8f0', bg: 'rgba(226,232,240,0.12)', desc: 'Top 1% global' },
+];
+
+const badges = [
+  {
+    name: 'El Muro',
+    quote: '"Lo devuelve todo. Imposible de ganar."',
+    desc: 'Defensa eterna, paciencia infinita. Rebotas el 60%+ de los remates rivales sin perder el punto.',
+    how: 'Voto post-partido + IA detecta ratio de defensa',
+    icon: '🛡️',
+    gradient: 'from-red-700 via-red-600 to-orange-500',
+    rarity: 'Platino ✦',
+    rarityColor: '#e2e8f0',
+    count: '×294',
+  },
+  {
+    name: 'El Cañonero',
+    quote: '"Smash y a casa."',
+    desc: 'Especialista en remates definitivos. Los rivales reportan más de 4 remates ganadores por partido.',
+    how: 'Voto humano + IA si rivales reportan >4 remates/partido',
+    icon: '💣',
+    gradient: 'from-orange-700 via-orange-500 to-amber-400',
+    rarity: 'Platino ✦',
+    rarityColor: '#e2e8f0',
+    count: '×98',
+  },
+  {
+    name: 'La Bestia',
+    quote: '"Saca con la mano cargada."',
+    desc: 'Saques que nadie devuelve. Tu equipo gana más del 70% de los puntos cuando sacas tú.',
+    how: 'Voto humano + IA mide % puntos ganados en tu saque',
+    icon: '⚡',
+    gradient: 'from-purple-700 via-purple-600 to-pink-500',
+    rarity: 'Épico',
+    rarityColor: '#9333ea',
+    count: '',
+  },
+  {
+    name: 'La Volea',
+    quote: '"Dueño/a de la red."',
+    desc: 'Cuando sube arriba, el punto es suyo. Ganas más del 75% de los puntos en la red.',
+    how: 'Voto humano + IA detecta posición y puntos en red',
+    icon: '🥅',
+    gradient: 'from-brand-700 via-brand-500 to-electric-400',
+    rarity: 'Épico',
+    rarityColor: '#9333ea',
+    count: '',
+  },
+  {
+    name: 'La Pluma',
+    quote: '"Toques imposibles."',
+    desc: 'Magia pura en la pala. Dejadas, recortes y víboras que los rivales reconocen sin dudar.',
+    how: 'Principalmente voto humano post-partido (reconocimiento)',
+    icon: '🪶',
+    gradient: 'from-teal-600 via-emerald-500 to-green-400',
+    rarity: 'Raro',
+    rarityColor: '#3b82f6',
+    count: '',
+  },
+  {
+    name: 'El Globo',
+    quote: '"Globos perfectos."',
+    desc: 'Globos altísimos e imposibles. Cuando el rival sube a la red, sabe que le van a techar.',
+    how: 'Voto humano post-partido · los rivales nomiran',
+    icon: '🎈',
+    gradient: 'from-sky-600 via-blue-500 to-indigo-400',
+    rarity: 'Raro',
+    rarityColor: '#3b82f6',
+    count: '',
+  },
+  {
+    name: 'El Maestro',
+    quote: '"Lee el juego antes que nadie."',
+    desc: 'Anticipa, coloca y dirige. Su equipo juega siempre donde quiere y cuando quiere.',
+    how: 'IA analiza patrones tácticos + 4 votos humanos',
+    icon: '♟️',
+    gradient: 'from-amber-700 via-amber-500 to-yellow-400',
+    rarity: 'Legendario',
+    rarityColor: '#f59e0b',
+    count: '',
+  },
+  {
+    name: 'El MVP',
+    quote: '"El mejor del campo, siempre."',
+    desc: 'Elegido MVP en 3 partidos consecutivos. Nadie lo discute.',
+    how: 'Voto unánime o mayoritario en 3 partidos seguidos',
+    icon: '👑',
+    gradient: 'from-yellow-500 via-gold-500 to-amber-400',
+    rarity: 'Legendario',
+    rarityColor: '#f59e0b',
+    count: '',
+  },
+];
+---
+
+<section id="insignias" class="relative py-28 overflow-hidden bg-white">
+  <div class="absolute inset-0 grid-pattern-light opacity-70"></div>
+  <!-- Top gradient border -->
+  <div class="absolute top-0 left-0 right-0 h-px" style="background: linear-gradient(90deg, transparent, rgba(99,102,241,0.3), transparent)"></div>
+
+  <div class="container-x relative">
+    <!-- Header -->
+    <div class="max-w-3xl mb-4">
+      <p class="badge badge-brand mb-4">Insignias de habilidad</p>
+      <h2 class="font-display text-4xl md:text-5xl font-bold text-ink-900">
+        No basta con ganar.<br/>
+        <span class="text-gradient-brand">¿Cómo juegas?</span>
+      </h2>
+      <p class="mt-4 text-ink-500 text-lg max-w-xl">
+        La IA analiza tus partidos y combina los votos de la comunidad para otorgarte las insignias que definen tu estilo real. No se compran. Se ganan.
+      </p>
+    </div>
+
+    <!-- Rarity legend -->
+    <div class="flex flex-wrap gap-2 mb-12">
+      {rarities.map(r => (
+        <div class="flex items-center gap-2 rounded-full px-3 py-1.5 ring-1 text-sm font-semibold"
+             style={`background: ${r.bg}; border-color: ${r.color}30; color: ${r.color}`}>
+          <span class="h-2 w-2 rounded-full" style={`background: ${r.color}`}></span>
+          {r.name}
+          <span class="opacity-60 font-normal text-xs">· {r.desc}</span>
+        </div>
+      ))}
+    </div>
+
+    <!-- Badges grid -->
+    <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+      {badges.map(b => (
+        <div class="group relative rounded-2xl bg-white ring-1 ring-ink-900/6 shadow-card overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl cursor-pointer">
+          <!-- Gradient top band -->
+          <div class={`h-1.5 w-full bg-gradient-to-r ${b.gradient}`}></div>
+
+          <div class="p-5">
+            <!-- Icon + rarity -->
+            <div class="flex items-start justify-between mb-4">
+              <div class={`h-14 w-14 rounded-2xl bg-gradient-to-br ${b.gradient} grid place-items-center text-2xl shadow-lg`}>
+                {b.icon}
+              </div>
+              <div class="text-right">
+                <span class="text-[10px] font-bold uppercase tracking-wider"
+                      style={`color: ${b.rarityColor === '#e2e8f0' ? '#94a3b8' : b.rarityColor}`}>
+                  {b.rarity}
+                </span>
+                {b.count && (
+                  <p class="text-sm font-bold text-ink-900">{b.count}</p>
+                )}
+              </div>
+            </div>
+
+            <h3 class="font-display text-xl font-bold text-ink-900">{b.name}</h3>
+            <p class="text-coral-500 text-xs italic font-semibold mt-0.5">{b.quote}</p>
+            <p class="text-ink-500 text-sm mt-3 leading-relaxed">{b.desc}</p>
+
+            <!-- How to get (shows on hover) -->
+            <div class="mt-4 pt-4 border-t border-ink-900/6">
+              <p class="text-[10px] font-bold uppercase tracking-wider text-ink-400 mb-1">Cómo se gana</p>
+              <p class="text-xs text-ink-500">{b.how}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- How the system works -->
+    <div class="mt-16 rounded-3xl bg-surface ring-1 ring-ink-900/6 p-8 grid md:grid-cols-3 gap-8">
+      <div class="text-center">
+        <div class="h-14 w-14 rounded-2xl bg-brand-50 ring-1 ring-brand-200 grid place-items-center text-2xl mx-auto mb-4">🗳️</div>
+        <h4 class="font-display font-bold text-ink-900 mb-2">1. Voto post-partido</h4>
+        <p class="text-sm text-ink-500">Los 4 jugadores votan al MVP y pueden nominar estilos de juego. La comunidad manda.</p>
+      </div>
+      <div class="text-center">
+        <div class="h-14 w-14 rounded-2xl bg-electric-500/10 ring-1 ring-electric-500/20 grid place-items-center text-2xl mx-auto mb-4">🤖</div>
+        <h4 class="font-display font-bold text-ink-900 mb-2">2. IA valida los datos</h4>
+        <p class="text-sm text-ink-500">El algoritmo cruza los votos con las stats del partido: saques, posición, puntos, rachas.</p>
+      </div>
+      <div class="text-center">
+        <div class="h-14 w-14 rounded-2xl bg-gold-500/10 ring-1 ring-gold-500/20 grid place-items-center text-2xl mx-auto mb-4">🏅</div>
+        <h4 class="font-display font-bold text-ink-900 mb-2">3. Insignia confirmada</h4>
+        <p class="text-sm text-ink-500">Cuando ambas fuentes coinciden, la insignia es tuya para siempre. Se acumula en tu perfil.</p>
+      </div>
+    </div>
+  </div>
+</section>

@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Energy blue (acento principal estilo Playtomic)
+        // Brand blue
         brand: {
           50: '#eef4ff',
           100: '#dbe6ff',
@@ -18,7 +18,21 @@ export default {
           900: '#1b2c89',
           950: '#141b53',
         },
-        // Coral / amber accent
+        // Electric indigo
+        electric: {
+          400: '#818cf8',
+          500: '#6366f1',
+          600: '#4f46e5',
+          700: '#4338ca',
+        },
+        // Gold / ranking
+        gold: {
+          300: '#fde68a',
+          400: '#fbbf24',
+          500: '#f59e0b',
+          600: '#d97706',
+        },
+        // Coral
         coral: {
           50: '#fff5ed',
           100: '#ffe8d4',
@@ -28,41 +42,50 @@ export default {
           500: '#ff5a17',
           600: '#f1410d',
           700: '#c8300d',
-          800: '#9e2913',
-          900: '#7f2513',
         },
-        // Soft greens for accents secundarios
+        // Court green
         court: {
-          50: '#effef3',
-          100: '#d8ffe1',
-          200: '#b3fec5',
-          300: '#76fb96',
-          400: '#36ed62',
-          500: '#0dd13c',
-          600: '#05a82d',
-          700: '#078427',
-          800: '#0a6824',
-          900: '#0a5520',
+          400: '#4ade80',
+          500: '#22c55e',
+          600: '#16a34a',
         },
-        // Neutrales claros
+        // Dark/midnight
+        night: {
+          50: '#f0f4ff',
+          100: '#e0e9ff',
+          700: '#1a2640',
+          800: '#0f1829',
+          900: '#080e1c',
+          950: '#04070f',
+        },
+        // Neutrals
         ink: {
           900: '#0b1020',
           800: '#161c2f',
           700: '#2a3147',
           500: '#4a5170',
+          400: '#6b7399',
           300: '#8189a3',
+          200: '#b0b8cc',
+          100: '#e4e7f0',
         },
         cream: '#fbf9f5',
+        surface: '#f4f6fb',
       },
       fontFamily: {
         sans: ['"Inter Variable"', 'Inter', 'system-ui', 'sans-serif'],
         display: ['"Space Grotesk"', 'Inter', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
-        glow: '0 25px 60px -20px rgba(47, 95, 255, 0.45)',
-        'glow-coral': '0 25px 60px -20px rgba(255, 90, 23, 0.45)',
+        glow: '0 20px 60px -15px rgba(47, 95, 255, 0.50)',
+        'glow-sm': '0 10px 30px -10px rgba(47, 95, 255, 0.40)',
+        'glow-gold': '0 20px 60px -15px rgba(245, 158, 11, 0.50)',
+        'glow-electric': '0 20px 60px -15px rgba(99, 102, 241, 0.50)',
+        'glow-coral': '0 20px 60px -15px rgba(255, 90, 23, 0.45)',
         soft: '0 24px 60px -32px rgba(15, 23, 42, 0.30)',
-        card: '0 10px 30px -10px rgba(15, 23, 42, 0.15), 0 2px 6px -2px rgba(15, 23, 42, 0.08)',
+        card: '0 4px 24px -4px rgba(15, 23, 42, 0.12), 0 1px 4px -1px rgba(15, 23, 42, 0.08)',
+        'card-dark': '0 4px 24px -4px rgba(0, 0, 0, 0.4)',
+        xl: '0 32px 80px -20px rgba(15, 23, 42, 0.20)',
       },
     },
   },

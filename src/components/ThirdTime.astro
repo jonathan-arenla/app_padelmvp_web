@@ -1,46 +1,119 @@
 ---
-import PhoneMockup from './PhoneMockup.astro';
+const items = [
+  {
+    icon: '👑',
+    title: 'Vota al MVP',
+    desc: 'Los 4 votan. El más votado gana puntos, badge de MVP y el derecho a señalar en el chat quién tuvo la culpa de perder el último punto.',
+  },
+  {
+    icon: '🍻',
+    title: 'Mesa en 1 toque',
+    desc: 'Bares y restaurantes aliados a un click. Descuentos exclusivos para usuarios PadelMVP. Ya está reservada antes de salir de la pista.',
+  },
+  {
+    icon: '💳',
+    title: 'Divide sin drama',
+    desc: 'Wallet integrada y Bizum directo. La cuenta se divide automáticamente entre los 4. Nadie desaparece cuando llega la factura.',
+  },
+  {
+    icon: '📸',
+    title: 'Resumen en vídeo',
+    desc: 'En clubs con cámaras compatibles, recibe automáticamente los mejores puntos del partido. Compártelo antes de acabar la primera caña.',
+  },
+];
 ---
-<section id="community" class="relative py-28 overflow-hidden bg-cream">
-  <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-300 to-transparent"></div>
-  <div class="container-x grid lg:grid-cols-[1fr_1.1fr] gap-16 items-center">
-    <div class="relative flex justify-center card-3d min-h-[600px]">
-      <div class="absolute -inset-20 bg-coral-200/60 blur-3xl rounded-full"></div>
-      <div class="relative animate-float-slow">
-        <PhoneMockup variant="mvp" tilt="none" />
-      </div>
-      <!-- Floating tags -->
-      <div class="absolute top-10 -left-4 bg-white rounded-2xl px-4 py-3 shadow-card animate-float-mid ring-1 ring-ink-900/5">
-        <p class="text-[10px] uppercase tracking-widest text-brand-600 font-bold">VOTADO MVP</p>
-        <p class="text-sm font-bold text-ink-900">+50 pts</p>
-      </div>
-      <div class="absolute bottom-16 -right-4 bg-white rounded-2xl px-4 py-3 shadow-card animate-float-slow ring-1 ring-ink-900/5">
-        <p class="text-[10px] uppercase tracking-widest text-coral-600 font-bold">3er Tiempo</p>
-        <p class="text-sm font-bold text-ink-900">Cervezas pedidas 🍻</p>
-      </div>
-    </div>
 
-    <div>
-      <p class="text-xs uppercase tracking-[0.3em] text-coral-600 font-bold">El alma del padel</p>
-      <h2 class="mt-3 font-display text-4xl md:text-5xl font-bold">El partido <span class="text-gradient-brand">empieza en la pista</span>, pero termina en el tercer tiempo.</h2>
-      <p class="mt-5 text-ink-500 text-lg">PadelMVP organiza lo que pasa <strong class="text-ink-900">después</strong> del último punto: mesa reservada, cuenta dividida, fotos del partido y nominación al MVP por votación.</p>
+<section id="tercer-tiempo" class="relative py-28 overflow-hidden" style="background: linear-gradient(135deg, #3d0f00 0%, #7c2d12 30%, #ea580c 60%, #f97316 100%);">
+  <div class="absolute inset-0 grid-pattern opacity-15"></div>
+  <!-- Noise texture -->
+  <div class="absolute inset-0 noise opacity-30"></div>
+  <!-- Top border -->
+  <div class="absolute top-0 left-0 right-0 h-px" style="background: linear-gradient(90deg, transparent, rgba(255,200,100,0.5), transparent)"></div>
 
-      <ul class="mt-8 space-y-4">
-        {[
-          { t: 'Vota al MVP del partido', d: 'Los 4 votan al mejor. El ganador se lleva puntos, badge y derecho a fardar.' },
-          { t: 'Mesa en 1 toque', d: 'Bares y restaurantes aliados con descuentos exclusivos para usuarios PadelMVP.' },
-          { t: 'Divide la cuenta sin discusiones', d: 'Wallet integrada, Bizum directo. Nadie se olvida de pagar su parte.' },
-          { t: 'Resumen del partido en vídeo', d: 'En clubs con cámaras compatibles, recibe los mejores puntos automáticamente.' },
-        ].map(item => (
-          <li class="flex gap-4">
-            <div class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-brand-600 text-white font-bold shadow-glow">✓</div>
-            <div>
-              <p class="font-semibold text-ink-900">{item.t}</p>
-              <p class="text-ink-500 text-sm">{item.d}</p>
+  <!-- Glow orbs -->
+  <div class="absolute -top-20 right-1/4 h-80 w-80 rounded-full blur-3xl opacity-30" style="background: radial-gradient(circle, #fbbf24, transparent)"></div>
+  <div class="absolute -bottom-20 left-1/4 h-60 w-60 rounded-full blur-3xl opacity-20" style="background: radial-gradient(circle, #ef4444, transparent)"></div>
+
+  <div class="container-x relative">
+    <div class="grid lg:grid-cols-[1fr_1.1fr] gap-16 items-center">
+      <div>
+        <p class="badge text-xs font-bold uppercase tracking-widest mb-6" style="background: rgba(255,200,100,0.2); color: #fed7aa; border: 1px solid rgba(255,200,100,0.3);">
+          🍻 La firma de PadelMVP
+        </p>
+        <h2 class="font-display text-4xl md:text-6xl font-bold text-white leading-[1.05]">
+          El partido empieza<br/>
+          en la pista.<br/>
+          <span style="color: #fed7aa;">Termina en el 3er tiempo.</span>
+        </h2>
+        <p class="mt-6 text-white/70 text-xl leading-relaxed max-w-lg">
+          Somos los únicos que organizamos lo que pasa <strong class="text-white">después</strong> del último punto. Porque el padel de verdad termina en el bar, con las cañas, las risas y el debate del MVP.
+        </p>
+
+        <div class="mt-10 grid sm:grid-cols-2 gap-4">
+          {items.map(i => (
+            <div class="rounded-2xl p-5" style="background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.15); backdrop-filter: blur(8px);">
+              <span class="text-2xl">{i.icon}</span>
+              <h4 class="font-display font-bold text-white mt-3 mb-1">{i.title}</h4>
+              <p class="text-white/65 text-sm leading-relaxed">{i.desc}</p>
             </div>
-          </li>
-        ))}
-      </ul>
+          ))}
+        </div>
+      </div>
+
+      <!-- Visual -->
+      <div class="relative flex justify-center">
+        <!-- Big decorative element -->
+        <div class="relative w-full max-w-md">
+          <!-- Beer celebration card -->
+          <div class="rounded-3xl p-6 shadow-xl animate-float" style="background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(12px);">
+            <div class="text-center mb-6">
+              <div class="text-6xl mb-3">🍻</div>
+              <h3 class="font-display text-2xl font-bold text-white">3er Tiempo confirmado</h3>
+              <p class="text-white/60 text-sm mt-1">Bar Padel Central · Mesa para 4</p>
+            </div>
+
+            <!-- MVP announcement -->
+            <div class="rounded-2xl mb-4 p-4 text-center" style="background: rgba(255,200,50,0.15); border: 1px solid rgba(255,200,50,0.3);">
+              <p class="text-amber-200 text-xs font-bold uppercase tracking-wider mb-1">🏆 MVP del Partido</p>
+              <p class="text-white font-display text-xl font-bold">Alex P.</p>
+              <p class="text-amber-200/70 text-sm">3 votos · +50 pts · +8 MVP Rating</p>
+            </div>
+
+            <!-- Split bill -->
+            <div class="rounded-2xl p-4" style="background: rgba(255,255,255,0.08);">
+              <p class="text-white/60 text-xs font-bold uppercase tracking-wider mb-3">Cuenta dividida</p>
+              <div class="space-y-2">
+                {[
+                  { n: 'Alex (MVP 🏆)', pays: '12.50€', highlight: true },
+                  { n: 'Marc', pays: '14.20€', highlight: false },
+                  { n: 'Sara', pays: '14.20€', highlight: false },
+                  { n: 'Jon', pays: '14.20€', highlight: false },
+                ].map(p => (
+                  <div class={`flex justify-between items-center text-sm ${p.highlight ? 'text-amber-200 font-semibold' : 'text-white/70'}`}>
+                    <span>{p.n}</span>
+                    <span class="font-bold">{p.pays}</span>
+                  </div>
+                ))}
+              </div>
+              <div class="mt-3 pt-3 border-t border-white/10 flex justify-between text-sm font-bold">
+                <span class="text-white">Total</span>
+                <span class="text-white">55.10€</span>
+              </div>
+            </div>
+
+            <!-- Bizum button -->
+            <button class="w-full mt-4 py-3 rounded-xl font-bold text-sm text-white" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25);">
+              Pagar con Bizum → 💸
+            </button>
+          </div>
+
+          <!-- Floating notification -->
+          <div class="absolute -top-4 -right-4 rounded-2xl px-4 py-2.5 shadow-xl animate-float-mid" style="background: rgba(255,255,255,0.95); border: 1px solid rgba(255,200,100,0.3);" >
+            <p class="text-[9px] font-bold uppercase tracking-wider" style="color: #d97706;">Bizum recibido</p>
+            <p class="text-sm font-bold text-ink-900">+14.20€ de Marc ✓</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>

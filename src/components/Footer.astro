@@ -1,43 +1,85 @@
 ---
 const year = new Date().getFullYear();
 ---
-<footer class="mt-32 border-t border-ink-900/5 bg-white">
-  <div class="container-x py-14 grid gap-10 md:grid-cols-4 text-sm">
-    <div>
-      <div class="flex items-center gap-2 font-display font-bold text-lg text-ink-900">
-        <span class="grid h-8 w-8 place-items-center rounded-xl bg-gradient-to-br from-brand-600 to-coral-500 text-white shadow-glow">
-          <svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor"><ellipse cx="9.5" cy="9" rx="6.5" ry="7.5"/><rect x="8.5" y="15" width="2" height="6" rx="1"/><circle cx="17" cy="17" r="2.5"/></svg>
-        </span>
-        PadelMVP
+<footer class="bg-night-950 text-white">
+  <div class="container-x pt-16 pb-8">
+    <div class="grid gap-10 md:grid-cols-[2fr_1fr_1fr_1fr]">
+      <!-- Brand -->
+      <div>
+        <a href="/" class="flex items-center gap-2.5 font-display text-lg font-bold text-white mb-5">
+          <div class="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-brand-500 to-electric-600 shadow-glow-sm">
+            <svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor">
+              <ellipse cx="9.5" cy="9" rx="6.5" ry="7.5"/>
+              <rect x="8.5" y="15" width="2" height="6" rx="1"/>
+              <circle cx="17" cy="17" r="2.5"/>
+            </svg>
+          </div>
+          PadelMVP
+        </a>
+        <p class="text-white/40 text-sm max-w-xs leading-relaxed">
+          La comunidad del padelero exigente. Reserva, compite, gana insignias y vive el 3er tiempo.
+        </p>
+        <div class="flex gap-3 mt-6">
+          {['in','📸','▶️'].map((s, i) => (
+            <a href="#" class="h-9 w-9 rounded-xl bg-white/8 hover:bg-white/15 transition grid place-items-center text-white/60 hover:text-white text-sm font-bold ring-1 ring-white/10">
+              {i === 0 ? 'in' : i === 1 ? 'ig' : 'yt'}
+            </a>
+          ))}
+        </div>
       </div>
-      <p class="mt-4 text-ink-500 max-w-xs">La app del padelero exigente. Reserva, juega, gana tu MVP y disfruta del tercer tiempo.</p>
+
+      <!-- Jugadores -->
+      <div>
+        <h4 class="text-white font-semibold mb-4">Jugadores</h4>
+        <ul class="space-y-2.5">
+          {[
+            { href: '/#como-funciona', label: 'Cómo funciona' },
+            { href: '/#ranking', label: 'Ranking y niveles' },
+            { href: '/#insignias', label: 'Insignias' },
+            { href: '/#torneos', label: 'Torneos' },
+            { href: '/#tercer-tiempo', label: '3er Tiempo' },
+            { href: '/#download', label: 'Descargar app' },
+          ].map(l => (
+            <li><a href={l.href} class="text-white/45 text-sm hover:text-white transition-colors">{l.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Clubs -->
+      <div>
+        <h4 class="text-white font-semibold mb-4">Para Clubs</h4>
+        <ul class="space-y-2.5">
+          {[
+            { href: '/clubs', label: 'PadelMVP Manager' },
+            { href: '/clubs#reservas', label: 'Reservas de pistas' },
+            { href: '/clubs#app-clubs', label: 'App de tu club' },
+            { href: '/clubs#precios', label: 'Precios' },
+            { href: 'mailto:clubs@padelmvp.app', label: 'Pedir demo' },
+          ].map(l => (
+            <li><a href={l.href} class="text-white/45 text-sm hover:text-white transition-colors">{l.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Contacto -->
+      <div>
+        <h4 class="text-white font-semibold mb-4">Contacto</h4>
+        <ul class="space-y-2.5">
+          {[
+            { href: 'mailto:hola@padelmvp.app', label: 'hola@padelmvp.app' },
+            { href: 'mailto:clubs@padelmvp.app', label: 'clubs@padelmvp.app' },
+            { href: '#', label: 'Política de privacidad' },
+            { href: '#', label: 'Términos de uso' },
+          ].map(l => (
+            <li><a href={l.href} class="text-white/45 text-sm hover:text-white transition-colors">{l.label}</a></li>
+          ))}
+        </ul>
+      </div>
     </div>
-    <div>
-      <h4 class="text-ink-900 font-semibold mb-3">Jugadores</h4>
-      <ul class="space-y-2 text-ink-500">
-        <li><a href="#features" class="hover:text-brand-600">Funciones</a></li>
-        <li><a href="#community" class="hover:text-brand-600">Tercer tiempo</a></li>
-        <li><a href="#download" class="hover:text-brand-600">Descargar app</a></li>
-      </ul>
+
+    <div class="mt-14 pt-8 border-t border-white/8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/25">
+      <p>© {year} PadelMVP — Hecho con pasión por padeleros, para padeleros.</p>
+      <p>Hecho en España 🇪🇸</p>
     </div>
-    <div>
-      <h4 class="text-ink-900 font-semibold mb-3">Clubs</h4>
-      <ul class="space-y-2 text-ink-500">
-        <li><a href="#manager" class="hover:text-brand-600">PadelMVP Manager</a></li>
-        <li><a href="#dashboard" class="hover:text-brand-600">Dashboard</a></li>
-        <li><a href="#pricing" class="hover:text-brand-600">Precios</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4 class="text-ink-900 font-semibold mb-3">Contacto</h4>
-      <ul class="space-y-2 text-ink-500">
-        <li><a href="mailto:hola@padelmvp.app" class="hover:text-brand-600">hola@padelmvp.app</a></li>
-        <li><a href="#" class="hover:text-brand-600">Instagram</a></li>
-        <li><a href="#" class="hover:text-brand-600">LinkedIn</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="border-t border-ink-900/5 py-6 text-center text-xs text-ink-300">
-    © {year} PadelMVP — Hecho con pasión por padeleros, para padeleros.
   </div>
 </footer>
