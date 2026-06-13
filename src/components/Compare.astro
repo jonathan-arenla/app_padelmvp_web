@@ -1,0 +1,65 @@
+---
+const before = [
+  'Nivel de juego auto-declarado, sin datos reales',
+  'Los partidos se olvidan en cuanto sales de la pista',
+  'Sin reconocimiento entre compañeros',
+  'Ligas organizadas por WhatsApp y hojas de Excel',
+  'Tu progreso, invisible para los demás',
+];
+
+const after = [
+  'Rating ELO basado en victorias verificadas',
+  'Cada partido genera estadísticas, insignias y ELO',
+  'Vota al MVP, reparte insignias, celebra en el muro',
+  'Ligas y americanas con ranking en vivo integrado',
+  'Carta FIFA con tus atributos reales y rango metálico',
+];
+---
+<section class="bg-night-900 py-24">
+  <div class="mx-auto max-w-6xl px-5">
+    <div class="mx-auto max-w-2xl text-center">
+      <p class="section-label !text-brand-400">Por qué Padel MVP</p>
+      <h2 class="section-title-light mt-3">
+        EL PÁDEL AMATEUR<br />
+        <span class="text-gradient-brand">MERECE MÁS.</span>
+      </h2>
+      <p class="mt-6 text-white/50">
+        El partido no debería terminar cuando cruzas la puerta de la pista.
+        Así se ve el pádel antes y después.
+      </p>
+    </div>
+
+    <div class="mt-16 overflow-hidden rounded-2xl border border-white/10">
+      <div class="grid grid-cols-2 bg-white/5 text-center">
+        <div class="border-r border-white/10 px-4 py-4">
+          <p class="text-xs font-bold uppercase tracking-widest text-white/40">Sin Padel MVP</p>
+          <p class="mt-1 text-sm text-white/40">Pádel de siempre</p>
+        </div>
+        <div class="px-4 py-4">
+          <p class="text-xs font-bold uppercase tracking-widest text-brand-400">Con Padel MVP</p>
+          <p class="mt-1 text-sm text-white/60">Pádel con alma</p>
+        </div>
+      </div>
+
+      {
+        before.map((row, i) => (
+          <div
+            class:list={[
+              'grid grid-cols-2 border-t border-white/10',
+              i % 2 === 0 ? 'bg-white/[0.02]' : '',
+            ]}
+          >
+            <div class="border-r border-white/10 px-5 py-4 flex items-center gap-2">
+              <span class="text-white/20 text-lg shrink-0">✕</span>
+              <p class="text-sm text-white/40">{row}</p>
+            </div>
+            <div class="px-5 py-4 flex items-center gap-2">
+              <span class="text-orange-500 text-lg shrink-0">✓</span>
+              <p class="text-sm font-medium text-white">{after[i]}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

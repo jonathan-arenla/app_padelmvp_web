@@ -1,59 +1,60 @@
 ---
-const items = [
+const reviews = [
   {
-    n: 'Andrés López',
-    r: 'Capitán equipo M3 · Madrid',
-    q: 'El sistema de insignias nos ha cambiado la forma de competir. El Muro, el Cañonero... ya no se discute quién jugó mejor. Lo dice la app.',
-    stars: 5,
-    badge: '🏆 Oro',
-    avatar: 'A',
-    grad: 'from-brand-500 to-electric-600',
+    headline: '¡La mejor app de pádel!',
+    name: 'Carlos A.',
+    avatar: 'C',
+    color: '#1040f5',
+    text: '"Con Padel MVP por fin tengo un ranking real. Cada partido cuenta, y el muro del club es adictivo. Mis compis y yo lo usamos después de cada partido."',
   },
   {
-    n: 'Sara Méndez',
-    r: 'Socia Club Padel Norte · BCN',
-    q: 'Por fin una app que entiende que el padel es comunidad. El 3er tiempo organizado es lo mejor que me ha pasado jugando a padel.',
-    stars: 5,
-    badge: '💎 Diamante',
-    avatar: 'S',
-    grad: 'from-coral-500 to-coral-400',
+    headline: '¡Una pasada!',
+    name: 'Marta B.',
+    avatar: 'M',
+    color: '#f97316',
+    text: '"Ha sido el mejor descubrimiento del año. El sistema de ELO es muy justo y las insignias molan muchísimo. El 3er tiempo se ha convertido en un ritual."',
   },
   {
-    n: 'Roberto J.',
-    r: 'Director · Padel Indoor BCN',
-    q: 'Pasamos de Playtomic a PadelMVP Manager. Mismas features, mitad de coste, soporte de verdad. Y los socios están mucho más enganchados.',
-    stars: 5,
-    badge: '🏟️ Club Pro',
-    avatar: 'R',
-    grad: 'from-gold-500 to-amber-400',
+    headline: '¡Rápida y muy completa!',
+    name: 'Iñigo P.',
+    avatar: 'I',
+    color: '#9b6bff',
+    text: '"Una app para registrar partidos, gestionar ligas del club y presumir de carta FIFA con tus amigos. Imprescindible para cualquier padelero."',
   },
 ];
 ---
-
-<section class="relative py-20 bg-surface">
-  <div class="container-x">
-    <div class="text-center mb-12">
-      <p class="badge badge-brand mb-3">Testimonios</p>
-      <h2 class="font-display text-3xl md:text-4xl font-bold text-ink-900">Lo que dice la comunidad.</h2>
+<section id="testimonios" class="bg-cream py-24">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="mb-14 text-center">
+      <p class="section-label">Opiniones</p>
+      <h2 class="font-display text-4xl leading-none tracking-wide text-night-900 sm:text-5xl mt-3">
+        LO QUE DICEN<br /><span class="text-brand-600">LOS JUGADORES</span>
+      </h2>
     </div>
-    <div class="grid md:grid-cols-3 gap-6">
-      {items.map(i => (
-        <figure class="card p-7 card-hover">
-          <div class="flex text-gold-400 mb-4 gap-0.5 text-sm">
-            {'★'.repeat(i.stars)}
+
+    <div class="grid gap-6 md:grid-cols-3">
+      {reviews.map(r => (
+        <div class="rounded-3xl bg-white p-8 shadow-card border border-gray-100">
+          <!-- Stars -->
+          <div class="flex gap-1 mb-4">
+            {Array(5).fill(null).map(() => <span class="text-orange-400">★</span>)}
           </div>
-          <blockquote class="text-ink-700 leading-relaxed">"{i.q}"</blockquote>
-          <figcaption class="mt-6 flex items-center gap-3">
-            <div class={`h-11 w-11 rounded-full bg-gradient-to-br ${i.grad} grid place-items-center font-bold text-white shrink-0`}>
-              {i.avatar}
+
+          <p class="font-bold text-night-900">{r.headline}</p>
+
+          <!-- Avatar + name -->
+          <div class="my-5 flex items-center gap-3">
+            <div
+              class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-sm font-bold text-white"
+              style={`background: ${r.color}`}
+            >
+              {r.avatar}
             </div>
-            <div>
-              <p class="font-semibold text-sm text-ink-900">{i.n}</p>
-              <p class="text-xs text-ink-400">{i.r}</p>
-            </div>
-            <span class="ml-auto text-xs font-bold text-ink-500 shrink-0">{i.badge}</span>
-          </figcaption>
-        </figure>
+            <p class="text-sm font-semibold text-night-900">{r.name}</p>
+          </div>
+
+          <p class="text-sm leading-relaxed text-gray-500">{r.text}</p>
+        </div>
       ))}
     </div>
   </div>

@@ -1,12 +1,14 @@
 ---
 import '../styles/global.css';
+
 export interface Props {
   title?: string;
   description?: string;
 }
+
 const {
-  title = 'PadelMVP — La app del padelero exigente',
-  description = 'PadelMVP: app de padel para jugadores exigentes y clubs. Reservas, MVP de partido, pagos desde el móvil y gestión integral de pistas. Más fácil. Más barato que Playtomic.',
+  title = 'Padel MVP — El partido no acaba en la pista',
+  description = 'App de gamificación post-partido para pádel amateur. Rating ELO, carta FIFA, insignias, ligas y 3er tiempo. Para padeleros exigentes.',
 } = Astro.props;
 ---
 <!doctype html>
@@ -20,10 +22,16 @@ const {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://padelmvp.app" />
+    <meta name="theme-color" content="#d84315" />
     <link rel="preconnect" href="https://rsms.me/" />
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+    />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
   <body class="overflow-x-hidden">

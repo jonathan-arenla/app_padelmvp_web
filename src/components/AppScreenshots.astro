@@ -1,0 +1,91 @@
+---
+const screens = [
+  {
+    file: '/screenshots/muro.png',
+    label: 'Muro del club',
+    desc: 'Feed en vivo con resultados, insignias y salseo de tus compis',
+  },
+  {
+    file: '/screenshots/torneo.png',
+    label: 'Crear torneo',
+    desc: 'Ligas y americanas en segundos, con inscripción por enlace',
+  },
+];
+---
+<section class="overflow-hidden bg-night-900 py-24">
+  <div class="mx-auto max-w-6xl px-5">
+    <div class="mx-auto max-w-2xl text-center">
+      <p class="section-label !text-brand-400">La app</p>
+      <h2 class="section-title-light mt-3">
+        DISEÑADA PARA<br />
+        <span class="text-gradient-brand">EL PADELERO.</span>
+      </h2>
+      <p class="mt-4 text-white/50">
+        Rápida, social y adictiva. Todo lo que pasa después del partido, en tu bolsillo.
+      </p>
+    </div>
+
+    <div class="mt-16 flex flex-wrap items-start justify-center gap-8 lg:gap-12">
+      {
+        screens.map((screen, i) => (
+          <div class:list={['flex flex-col items-center gap-4', i === 1 ? 'lg:mt-12' : '']}>
+            <!-- Phone frame -->
+            <div class="relative">
+              <!-- Outer frame -->
+              <div class="relative h-[580px] w-[270px] rounded-[2.8rem] border-4 border-night-600 bg-night-800 p-2 shadow-card-dark">
+                <!-- Dynamic island / notch -->
+                <div class="absolute left-1/2 top-3 z-10 h-6 w-20 -translate-x-1/2 rounded-full bg-night-900"></div>
+                <!-- Screen area -->
+                <div class="h-full w-full overflow-hidden rounded-[2.2rem] bg-white">
+                  <img
+                    src={screen.file}
+                    alt={screen.label}
+                    class="h-full w-full object-cover object-top"
+                    onerror="this.parentElement.innerHTML=this.parentElement.dataset.fallback"
+                    data-fallback={`<div class='flex h-full flex-col bg-white'><div class='bg-night-900 px-4 pt-12 pb-4 text-center'><p class='text-xs font-bold uppercase tracking-widest text-orange-400'>Padel MVP</p></div><div class='flex flex-1 items-center justify-center p-6'><p class='text-center text-sm text-night-900/40'>Añade tu screenshot a<br/><code class='text-xs bg-surface px-1 py-0.5 rounded'>public${screen.file}</code></p></div></div>`}
+                  />
+                </div>
+              </div>
+              <!-- Glow effect -->
+              <div class="absolute inset-0 rounded-[2.8rem] bg-brand-600/10 blur-2xl -z-10 scale-90"></div>
+            </div>
+
+            <!-- Caption -->
+            <div class="text-center">
+              <p class="font-display text-lg tracking-wide text-white">{screen.label}</p>
+              <p class="mt-1 max-w-[220px] text-sm text-white/40">{screen.desc}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- App store badges -->
+    <div class="mt-16 flex flex-wrap items-center justify-center gap-4">
+      <a
+        href="#descargar"
+        class="inline-flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-5 py-3 text-white transition hover:bg-white/10"
+      >
+        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+        </svg>
+        <div class="text-left">
+          <p class="text-[10px] leading-none opacity-60">Próximamente en</p>
+          <p class="text-sm font-bold">App Store</p>
+        </div>
+      </a>
+      <a
+        href="#descargar"
+        class="inline-flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-5 py-3 text-white transition hover:bg-white/10"
+      >
+        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M3.609 1.814L13.792 12 3.61 22.186a1.77 1.77 0 0 1-.465-.635 1.86 1.86 0 0 1-.144-.742V3.291c0-.271.05-.534.144-.742a1.77 1.77 0 0 1 .464-.635zm2.502 20.453l9.326-9.326-2.562-2.562-6.764 11.888zm9.326-11.05l2.562-2.562L6.111 1.814l6.326 9.303zM16.437 3.291v17.418l5.553-5.553-5.553-9.865z"/>
+        </svg>
+        <div class="text-left">
+          <p class="text-[10px] leading-none opacity-60">Próximamente en</p>
+          <p class="text-sm font-bold">Google Play</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>

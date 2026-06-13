@@ -1,0 +1,128 @@
+---
+const steps = [
+  {
+    num: '1',
+    title: 'Registra',
+    desc: 'Apunta tu partido manualmente o impórtalo con un enlace. Verifica el resultado con tu equipo y rival.',
+  },
+  {
+    num: '2',
+    title: 'Evoluciona',
+    desc: 'Tu ELO sube con cada victoria verificada. Tu carta FIFA muestra tus 6 atributos reales y tu rango metálico.',
+  },
+  {
+    num: '3',
+    title: 'Compite y gana',
+    desc: 'Únete a ligas, americanas y leaderboards del club. Vota al MVP, reparte insignias y disfruta el 3er tiempo.',
+  },
+];
+---
+<section id="como-funciona" class="relative overflow-hidden py-28">
+  <!-- Navy gradient background -->
+  <div class="absolute inset-0 section-navy"></div>
+
+  <!-- Decorative blob -->
+  <div class="absolute -right-40 -top-40 h-[500px] w-[500px] rounded-full bg-brand-600/20 blur-[100px] pointer-events-none"></div>
+  <div class="absolute -left-40 -bottom-40 h-[400px] w-[400px] rounded-full bg-orange-500/10 blur-[100px] pointer-events-none"></div>
+
+  <div class="relative mx-auto max-w-7xl px-6">
+    <div class="grid items-center gap-16 lg:grid-cols-2">
+
+      <!-- Text side -->
+      <div>
+        <p class="section-label !text-brand-300">Para jugadores</p>
+        <h2 class="section-title-light mt-3">
+          PADEL MVP<br />
+          <span class="text-gradient-brand">PARA JUGADORES</span>
+        </h2>
+        <p class="mt-6 text-lg leading-relaxed text-white/60">
+          Con Padel MVP tienes la posibilidad de registrar partidos, conectar con tus compis del club
+          y seguir tu progreso real semana a semana.
+        </p>
+
+        <!-- Numbered steps -->
+        <div class="mt-10 space-y-8">
+          {steps.map(step => (
+            <div class="flex gap-5">
+              <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white/10 font-display text-2xl text-white border border-white/20">
+                {step.num}
+              </div>
+              <div>
+                <h3 class="font-display text-xl tracking-wide text-white">{step.title}</h3>
+                <p class="mt-1 text-sm leading-relaxed text-white/50">{step.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <a href="#descargar" class="btn-primary mt-10 inline-flex">
+          Descargar la app
+        </a>
+      </div>
+
+      <!-- Phone mockup -->
+      <div class="flex justify-center lg:justify-end">
+        <div class="relative">
+          <!-- Primary phone -->
+          <div class="relative h-[500px] w-[240px] rounded-[2.8rem] border-4 border-white/20 bg-white/5 p-2 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.6)] backdrop-blur-sm">
+            <div class="absolute left-1/2 top-3 z-10 h-5 w-16 -translate-x-1/2 rounded-full bg-black/40"></div>
+            <div class="h-full w-full overflow-hidden rounded-[2.2rem] bg-white">
+              <!-- 3er tiempo screen mockup -->
+              <div class="flex h-full flex-col bg-white">
+                <div class="bg-night-900 px-4 pt-10 pb-4 text-center">
+                  <p class="text-[10px] font-bold uppercase tracking-wider text-brand-300">3ER TIEMPO</p>
+                  <p class="font-display text-xl tracking-wide text-white">¿Quién fue el MVP?</p>
+                </div>
+                <div class="space-y-2 p-4">
+                  {['Carlos M.', 'Ana R.', 'Pedro L.', 'Laura S.'].map((name, i) => (
+                    <div class:list={[
+                      'flex items-center gap-3 rounded-xl px-3 py-2.5',
+                      i === 0 ? 'bg-brand-50 ring-2 ring-brand-200' : 'bg-gray-50',
+                    ]}>
+                      <div class:list={['flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold text-white', i === 0 ? 'bg-brand-600' : 'bg-gray-300']}>
+                        {name[0]}
+                      </div>
+                      <span class:list={['text-sm font-medium', i === 0 ? 'text-brand-700' : 'text-gray-600']}>{name}</span>
+                      {i === 0 && <span class="ml-auto text-sm">👑</span>}
+                    </div>
+                  ))}
+                </div>
+                <div class="mt-auto px-4 pb-4">
+                  <div class="rounded-full bg-brand-600 py-3 text-center text-sm font-bold text-white shadow-glow-sm">
+                    Confirmar MVP
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Second phone (slightly behind) -->
+          <div class="absolute -right-16 top-12 hidden lg:block h-[420px] w-[200px] rounded-[2.4rem] border-4 border-white/10 bg-white/5 p-2 shadow-card-dark backdrop-blur-sm opacity-60">
+            <div class="absolute left-1/2 top-3 z-10 h-4 w-12 -translate-x-1/2 rounded-full bg-black/40"></div>
+            <div class="h-full w-full overflow-hidden rounded-[1.8rem] bg-gray-900">
+              <div class="flex h-full flex-col">
+                <div class="bg-night-900 px-3 pt-8 pb-3">
+                  <div class="flex items-center gap-2">
+                    <div class="h-6 w-6 rounded bg-brand-600/30 flex items-center justify-center text-[8px] text-brand-300">🏆</div>
+                    <span class="text-[10px] font-bold text-white">LIGA VERANO 2024</span>
+                  </div>
+                </div>
+                <div class="p-3 space-y-1.5">
+                  {['Carlos M.','Ana R.','Pedro L.','Iñigo P.'].map((n, i) => (
+                    <div class="flex items-center gap-2 rounded-lg bg-white/5 px-2 py-1.5">
+                      <span class="text-[10px] text-white/40">#{i+1}</span>
+                      <div class="h-5 w-5 rounded-full bg-brand-600/30 flex items-center justify-center text-[8px] text-white">{n[0]}</div>
+                      <span class="text-[9px] text-white">{n}</span>
+                      <span class="ml-auto text-[9px] text-gold-400">{[28,24,21,18][i]}pts</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

@@ -1,0 +1,87 @@
+---
+import { APP_NAME, APP_CLAIM } from '../lib/brand';
+---
+<section id="vision" class="bg-cream py-24">
+  <div class="mx-auto max-w-6xl px-5">
+    <div class="mx-auto max-w-3xl text-center">
+      <p class="section-label">Nuestra visión</p>
+      <h2 class="section-title mt-3">¿Qué es {APP_NAME}?</h2>
+      <p class="mt-6 text-lg leading-relaxed text-night-900/60">
+        {APP_NAME} es la app de <strong class="text-night-900">gamificación post-partido</strong> para
+        pádel amateur. Hacemos que <em>cada partido cuente</em> después del último punto: ELO,
+        insignias, ligas y una comunidad con la que celebrar cada victoria.
+      </p>
+    </div>
+
+    <div class="mt-16 grid gap-6 md:grid-cols-3">
+      <div class="feature-card">
+        <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-brand-600/10 text-2xl">
+          🎯
+        </div>
+        <h3 class="font-display text-xl tracking-wide text-night-900">Medir tu nivel real</h3>
+        <p class="mt-2 text-sm leading-relaxed text-night-900/60">
+          Rating ELO, carta de jugador estilo FIFA con 6 atributos y rangos de Bronce a Diamante.
+          Tu progreso basado en partidos reales, no en autoevaluación.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-brand-600/10 text-2xl">
+          🏆
+        </div>
+        <h3 class="font-display text-xl tracking-wide text-night-900">Competir en tu club</h3>
+        <p class="mt-2 text-sm leading-relaxed text-night-900/60">
+          Crea ligas regulares, torneos americanos exprés e invita a tu grupo con un enlace.
+          Rankings en vivo y jornadas que mantienen la rivalidad viva toda la temporada.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-brand-600/10 text-2xl">
+          🔥
+        </div>
+        <h3 class="font-display text-xl tracking-wide text-night-900">Vivir el 3er tiempo</h3>
+        <p class="mt-2 text-sm leading-relaxed text-night-900/60">
+          {APP_CLAIM} Vota al MVP, reparte insignias entre compis, publica en el muro y comparte
+          tu carta como si fuera un highlight de Champions.
+        </p>
+      </div>
+    </div>
+
+    <div class="mt-16 rounded-2xl border border-brand-600/20 bg-white p-8 shadow-card md:p-12">
+      <div class="grid items-center gap-8 md:grid-cols-2">
+        <div>
+          <p class="section-label">Qué pretendemos</p>
+          <h3 class="mt-2 font-display text-3xl tracking-wide text-night-900">
+            SER LA RED SOCIAL DEL PÁDEL AMATEUR
+          </h3>
+          <p class="mt-4 text-sm leading-relaxed text-night-900/60">
+            Queremos que el pádel amateur tenga la misma emoción que el deporte profesional:
+            estadísticas, reconocimiento entre pares, rivalidades sanas y una comunidad que celebra
+            cada victoria. PadelCoins canjeables por material real, importación de partidos
+            desde otras apps y un futuro dashboard B2B para clubs y marcas.
+          </p>
+        </div>
+        <div class="space-y-3">
+          {
+            [
+              'Importar partidos desde otras apps',
+              '14 insignias con tiers Bronce → Platino',
+              'Muro social con salseo, trofeos y resultados',
+              'PadelCoins: juega y canjea material real',
+              'Mejor pareja y bestia negra con winrate',
+              'Recorrido Starter de 10 pasos para nuevos',
+            ].map((item) => (
+              <div class="flex items-center gap-3">
+                <div class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-600 text-xs text-white">
+                  ✓
+                </div>
+                <p class="text-sm text-night-900/70">{item}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

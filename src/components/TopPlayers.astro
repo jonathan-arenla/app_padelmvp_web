@@ -1,0 +1,70 @@
+---
+const players = [
+  { name: 'Carlos M.', club: 'Padel Norte BCN', elo: 1820, rank: 'Diamante', color: '#9b6bff', emoji: '💎', position: 1 },
+  { name: 'Ana R.', club: 'Club Retiro Madrid', elo: 1650, rank: 'Platino', color: '#e5e4e2', emoji: '⚪', position: 2 },
+  { name: 'Pedro L.', club: 'Padel Indoor BCN', elo: 1490, rank: 'Oro', color: '#d4a82a', emoji: '🥇', position: 3 },
+  { name: 'Laura S.', club: 'Club Padel Norte', elo: 1380, rank: 'Plata', color: '#c0c0c0', emoji: '🥈', position: 4 },
+  { name: 'Iñigo P.', club: 'Murcia Padel Club', elo: 1240, rank: 'Plata', color: '#c0c0c0', emoji: '🥈', position: 5 },
+  { name: 'Marta F.', club: 'Valencia Padel', elo: 980, rank: 'Bronce', color: '#cd7f32', emoji: '🥉', position: 6 },
+];
+---
+<section class="bg-white py-24">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="mb-10 flex items-end justify-between">
+      <div>
+        <h2 class="font-display text-3xl tracking-wide text-night-900 sm:text-4xl">
+          TOP JUGADORES<br /><span class="text-brand-600">DEL CLUB</span>
+        </h2>
+        <p class="mt-2 text-gray-500">Los más activos esta semana en la comunidad</p>
+      </div>
+      <a href="#descargar" class="hidden text-sm font-semibold text-brand-600 hover:underline sm:block">
+        Ver ranking completo →
+      </a>
+    </div>
+
+    <!-- Scrollable cards row — Playtomic club cards style -->
+    <div class="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory">
+      {players.map(p => (
+        <div class="player-card flex-none w-56 snap-start">
+          <!-- Position badge -->
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-2xl font-display text-gray-200">#{p.position}</span>
+            <span
+              class="rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider"
+              style={`background: ${p.color}22; color: ${p.color === '#e5e4e2' ? '#888' : p.color};`}
+            >
+              {p.rank}
+            </span>
+          </div>
+
+          <!-- Avatar -->
+          <div
+            class="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-full text-2xl font-bold text-white shadow-sm"
+            style={`background: linear-gradient(135deg, ${p.color}cc, ${p.color}66);`}
+          >
+            {p.name[0]}
+          </div>
+
+          <p class="text-center font-display text-lg tracking-wide text-night-900">{p.name}</p>
+          <p class="text-center text-xs text-gray-400">{p.club}</p>
+
+          <!-- ELO -->
+          <div class="mt-4 rounded-xl bg-cream px-3 py-2 text-center">
+            <p class="text-xl font-display text-night-900">{p.elo}</p>
+            <p class="text-[10px] text-gray-400 uppercase tracking-wider">ELO rating</p>
+          </div>
+
+          <!-- CTA -->
+          <a href="#descargar" class="mt-4 block w-full rounded-full border-2 border-brand-600 py-2 text-center text-xs font-bold text-brand-600 transition hover:bg-brand-50">
+            Ver perfil
+          </a>
+        </div>
+      ))}
+    </div>
+
+    <!-- Mobile "ver más" -->
+    <div class="mt-6 text-center sm:hidden">
+      <a href="#descargar" class="text-sm font-semibold text-brand-600 hover:underline">Ver ranking completo →</a>
+    </div>
+  </div>
+</section>

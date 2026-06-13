@@ -1,85 +1,84 @@
 ---
+import { APP_NAME } from '../lib/brand';
 const year = new Date().getFullYear();
 ---
-<footer class="bg-night-950 text-white">
-  <div class="container-x pt-16 pb-8">
-    <div class="grid gap-10 md:grid-cols-[2fr_1fr_1fr_1fr]">
-      <!-- Brand -->
-      <div>
-        <a href="/" class="flex items-center gap-2.5 font-display text-lg font-bold text-white mb-5">
-          <div class="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-brand-500 to-electric-600 shadow-glow-sm">
-            <svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor">
-              <ellipse cx="9.5" cy="9" rx="6.5" ry="7.5"/>
-              <rect x="8.5" y="15" width="2" height="6" rx="1"/>
-              <circle cx="17" cy="17" r="2.5"/>
-            </svg>
-          </div>
-          PadelMVP
-        </a>
-        <p class="text-white/40 text-sm max-w-xs leading-relaxed">
-          La comunidad del padelero exigente. Reserva, compite, gana insignias y vive el 3er tiempo.
+<footer class="bg-night-900 text-white">
+  <div class="mx-auto max-w-7xl px-6 py-16">
+    <div class="grid gap-12 md:grid-cols-4">
+
+      <!-- Brand col -->
+      <div class="md:col-span-1">
+        <div class="flex items-center gap-2">
+          <img src="/logo.svg" alt="Padel MVP" class="h-10 w-auto" />
+          <span class="font-display text-lg tracking-wider">{APP_NAME.toUpperCase()}</span>
+        </div>
+        <p class="mt-4 text-sm leading-relaxed text-white/50">
+          La app de gamificación post-partido para pádel amateur. Para padeleros exigentes.
         </p>
-        <div class="flex gap-3 mt-6">
-          {['in','📸','▶️'].map((s, i) => (
-            <a href="#" class="h-9 w-9 rounded-xl bg-white/8 hover:bg-white/15 transition grid place-items-center text-white/60 hover:text-white text-sm font-bold ring-1 ring-white/10">
-              {i === 0 ? 'in' : i === 1 ? 'ig' : 'yt'}
+        <!-- Social icons -->
+        <div class="mt-6 flex gap-3">
+          {[
+            { label: 'Instagram', href: '#', icon: '📸' },
+            { label: 'Twitter', href: '#', icon: '🐦' },
+            { label: 'TikTok', href: '#', icon: '🎵' },
+          ].map(s => (
+            <a href={s.href} class="flex h-9 w-9 items-center justify-center rounded-xl bg-white/10 text-sm transition hover:bg-white/20" title={s.label}>
+              {s.icon}
             </a>
           ))}
         </div>
       </div>
 
-      <!-- Jugadores -->
+      <!-- Links col 1 -->
       <div>
-        <h4 class="text-white font-semibold mb-4">Jugadores</h4>
-        <ul class="space-y-2.5">
-          {[
-            { href: '/#como-funciona', label: 'Cómo funciona' },
-            { href: '/#ranking', label: 'Ranking y niveles' },
-            { href: '/#insignias', label: 'Insignias' },
-            { href: '/#torneos', label: 'Torneos' },
-            { href: '/#tercer-tiempo', label: '3er Tiempo' },
-            { href: '/#download', label: 'Descargar app' },
-          ].map(l => (
-            <li><a href={l.href} class="text-white/45 text-sm hover:text-white transition-colors">{l.label}</a></li>
-          ))}
+        <h4 class="text-xs font-bold uppercase tracking-widest text-white/40 mb-4">Padel MVP</h4>
+        <ul class="space-y-3 text-sm text-white/60">
+          <li><a href="#" class="transition hover:text-white">Descargar la app</a></li>
+          <li><a href="/clubs" class="transition hover:text-white">Para clubs</a></li>
+          <li><a href="#features" class="transition hover:text-white">Funciones</a></li>
+          <li><a href="#como-funciona" class="transition hover:text-white">Cómo funciona</a></li>
         </ul>
       </div>
 
-      <!-- Clubs -->
+      <!-- Links col 2 -->
       <div>
-        <h4 class="text-white font-semibold mb-4">Para Clubs</h4>
-        <ul class="space-y-2.5">
-          {[
-            { href: '/clubs', label: 'PadelMVP Manager' },
-            { href: '/clubs#reservas', label: 'Reservas de pistas' },
-            { href: '/clubs#app-clubs', label: 'App de tu club' },
-            { href: '/clubs#precios', label: 'Precios' },
-            { href: 'mailto:clubs@padelmvp.app', label: 'Pedir demo' },
-          ].map(l => (
-            <li><a href={l.href} class="text-white/45 text-sm hover:text-white transition-colors">{l.label}</a></li>
-          ))}
+        <h4 class="text-xs font-bold uppercase tracking-widest text-white/40 mb-4">Empresa</h4>
+        <ul class="space-y-3 text-sm text-white/60">
+          <li><a href="#" class="transition hover:text-white">Sobre nosotros</a></li>
+          <li><a href="#" class="transition hover:text-white">Blog</a></li>
+          <li><a href="#" class="transition hover:text-white">Trabaja con nosotros</a></li>
+          <li><a href="mailto:hola@padelmvp.app" class="transition hover:text-white">Contacto</a></li>
         </ul>
       </div>
 
-      <!-- Contacto -->
+      <!-- Links col 3 -->
       <div>
-        <h4 class="text-white font-semibold mb-4">Contacto</h4>
-        <ul class="space-y-2.5">
-          {[
-            { href: 'mailto:hola@padelmvp.app', label: 'hola@padelmvp.app' },
-            { href: 'mailto:clubs@padelmvp.app', label: 'clubs@padelmvp.app' },
-            { href: '#', label: 'Política de privacidad' },
-            { href: '#', label: 'Términos de uso' },
-          ].map(l => (
-            <li><a href={l.href} class="text-white/45 text-sm hover:text-white transition-colors">{l.label}</a></li>
-          ))}
+        <h4 class="text-xs font-bold uppercase tracking-widest text-white/40 mb-4">Legal</h4>
+        <ul class="space-y-3 text-sm text-white/60">
+          <li><a href="#" class="transition hover:text-white">Privacidad</a></li>
+          <li><a href="#" class="transition hover:text-white">Términos</a></li>
+          <li><a href="#" class="transition hover:text-white">Cookies</a></li>
         </ul>
+
+        <!-- App store badges -->
+        <div class="mt-6 space-y-2">
+          <a href="#descargar" class="flex items-center gap-2 rounded-xl bg-white/10 px-3 py-2 text-xs transition hover:bg-white/20">
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            App Store (próximamente)
+          </a>
+          <a href="#descargar" class="flex items-center gap-2 rounded-xl bg-white/10 px-3 py-2 text-xs transition hover:bg-white/20">
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a1.77 1.77 0 0 1-.465-.635 1.86 1.86 0 0 1-.144-.742V3.291c0-.271.05-.534.144-.742a1.77 1.77 0 0 1 .464-.635zm2.502 20.453l9.326-9.326-2.562-2.562-6.764 11.888zm9.326-11.05l2.562-2.562L6.111 1.814l6.326 9.303zM16.437 3.291v17.418l5.553-5.553-5.553-9.865z"/></svg>
+            Google Play (próximamente)
+          </a>
+        </div>
       </div>
+
     </div>
 
-    <div class="mt-14 pt-8 border-t border-white/8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/25">
-      <p>© {year} PadelMVP — Hecho con pasión por padeleros, para padeleros.</p>
-      <p>Hecho en España 🇪🇸</p>
+    <!-- Bottom bar -->
+    <div class="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 sm:flex-row">
+      <p class="text-xs text-white/30">© {year} {APP_NAME}. Todos los derechos reservados.</p>
+      <p class="text-xs text-white/30">Hecho con 🎾 para padeleros exigentes</p>
     </div>
   </div>
 </footer>

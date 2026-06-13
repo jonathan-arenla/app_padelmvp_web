@@ -1,182 +1,144 @@
 ---
+import { attributes } from '../lib/ranks';
+const attrValues = [82, 79, 88, 91, 76, 85];
 ---
-<section class="relative min-h-screen overflow-hidden bg-night-950 flex flex-col" style="margin-top: -64px; padding-top: 64px;">
-  <!-- Background layers -->
-  <div class="absolute inset-0 grid-pattern"></div>
-  <div class="absolute inset-0" style="background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(47,95,255,0.20) 0%, transparent 70%)"></div>
-  <div class="absolute inset-0" style="background: radial-gradient(ellipse 50% 40% at 85% 60%, rgba(99,102,241,0.12) 0%, transparent 60%)"></div>
-  <div class="absolute inset-0" style="background: radial-gradient(ellipse 40% 30% at 10% 80%, rgba(255,90,23,0.08) 0%, transparent 60%)"></div>
+<section class="relative overflow-hidden bg-white pt-24 pb-16 lg:pb-0">
 
-  <div class="container-x relative flex-1 flex items-center py-20">
-    <div class="w-full grid lg:grid-cols-2 gap-12 items-center">
+  <!-- Blue blob bg (Playtomic style) -->
+  <div class="absolute right-0 top-0 h-full w-1/2 overflow-hidden pointer-events-none">
+    <svg viewBox="0 0 800 700" class="absolute right-0 top-0 h-full w-auto opacity-100" preserveAspectRatio="xMaxYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="blobGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#1040f5;stop-opacity:1"/>
+          <stop offset="100%" style="stop-color:#0d1a3e;stop-opacity:1"/>
+        </linearGradient>
+      </defs>
+      <path d="M200,0 L800,0 L800,700 L100,700 Q0,600 50,400 Q100,200 200,0Z" fill="url(#blobGrad)"/>
+    </svg>
+  </div>
 
-      <!-- Text -->
-      <div class="text-white">
-        <!-- Pill -->
-        <div class="inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/8 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-white/70 backdrop-blur-sm mb-8">
-          <span class="h-1.5 w-1.5 rounded-full bg-court-400 animate-pulse-dot"></span>
-          Temporada 2026 · Ya disponible
-        </div>
+  <div class="relative mx-auto grid max-w-7xl items-center gap-8 px-6 py-12 lg:grid-cols-2 lg:py-20">
 
-        <h1 class="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.04] tracking-tight">
-          No es solo<br/>
-          una app de<br/>
-          <span class="text-gradient-brand">padel.</span>
-        </h1>
-
-        <p class="mt-6 text-lg text-white/60 max-w-md leading-relaxed">
-          Reserva, compite, gana insignias, vota tu MVP y vive el <strong class="text-white/90">3er tiempo</strong>. La comunidad de padeleros que lo vive más allá de la pista.
-        </p>
-
-        <div class="mt-10 flex flex-wrap gap-3">
-          <a href="#download" class="btn-primary text-base shadow-glow">
-            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.04c-.03-2.85 2.33-4.22 2.44-4.29-1.34-1.96-3.42-2.23-4.16-2.26-1.78-.18-3.46.96-4.36.96-.91 0-2.29-.94-3.78-.91-1.94.03-3.74 1.14-4.74 2.88-2.04 3.54-.52 8.76 1.45 11.62.97 1.4 2.11 2.96 3.59 2.91 1.45-.06 2-.94 3.74-.94 1.75 0 2.25.94 3.79.91 1.57-.03 2.55-1.42 3.5-2.83 1.13-1.62 1.59-3.21 1.62-3.29-.04-.02-3.11-1.2-3.14-4.76z"/></svg>
-            Descargar gratis
-          </a>
-          <a href="#como-funciona" class="btn-ghost-dark text-base">
-            Cómo funciona ↓
-          </a>
-        </div>
-
-        <!-- Social proof -->
-        <div class="mt-12 flex items-center gap-5">
-          <div class="flex -space-x-2.5">
-            {['J','M','A','R','S'].map((l, i) => (
-              <div class="h-9 w-9 rounded-full ring-2 ring-night-950 grid place-items-center text-white text-[11px] font-bold"
-                   style={`background: linear-gradient(135deg, hsl(${220 + i*30},80%,55%), hsl(${250 + i*30},70%,45%))`}>
-                {l}
-              </div>
-            ))}
-          </div>
-          <div class="text-sm text-white/60">
-            <p class="text-white font-semibold">★★★★★ 4.9 · +24.000 jugadores</p>
-            <p>ya están en la comunidad</p>
-          </div>
-        </div>
+    <!-- Left: Text -->
+    <div class="z-10">
+      <div class="inline-flex items-center gap-2 rounded-full bg-brand-50 px-4 py-1.5 text-xs font-semibold text-brand-600 mb-6">
+        🎾 La app de pádel amateur
       </div>
 
-      <!-- Phone stack -->
-      <div class="relative flex justify-center items-center min-h-[580px]">
-        <!-- Glow behind phones -->
-        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div class="h-80 w-80 rounded-full bg-brand-500/20 blur-3xl"></div>
-        </div>
+      <!-- Playtomic-style headline: mix bold + italic -->
+      <h1 class="font-display text-5xl leading-[1.0] tracking-wide text-night-900 sm:text-6xl lg:text-7xl">
+        <span class="block">COMPITE,</span>
+        <span class="block text-gradient-brand italic">EVOLUCIONA,</span>
+        <span class="block">DOMINA.</span>
+      </h1>
 
-        <!-- Phone 1 — Perfil / Ranking -->
-        <div class="absolute left-0 top-8 animate-float-slow z-20" style="transform-origin: center;">
-          <div class="w-52 bg-night-800 rounded-[1.8rem] p-2.5 shadow-card-dark ring-1 ring-white/10">
-            <div class="bg-night-900 rounded-[1.4rem] overflow-hidden">
-              <!-- Header dorado -->
-              <div class="p-3" style="background: linear-gradient(135deg, #92680a, #d97706, #f59e0b);">
-                <div class="flex justify-between items-start mb-2">
-                  <p class="text-white/70 text-[9px] font-bold uppercase tracking-wider">Mi Perfil</p>
-                  <span class="bg-white/20 text-white text-[9px] font-bold px-2 py-0.5 rounded-full">● ORO</span>
-                </div>
-                <div class="flex items-center gap-2">
-                  <div class="h-10 w-10 rounded-xl bg-night-900/40 grid place-items-center text-lg font-bold text-white">A</div>
-                  <div>
-                    <p class="text-white font-bold text-sm">ALEX</p>
-                    <p class="text-white/60 text-[9px]">@alex_padel</p>
-                  </div>
-                </div>
-                <!-- Rating -->
-                <div class="mt-2 bg-night-900/30 rounded-xl p-2 flex items-center gap-2">
-                  <span class="font-display text-2xl font-bold text-white">74</span>
-                  <div>
-                    <p class="text-white text-[9px] font-bold">RATING MVP</p>
-                    <p class="text-white/60 text-[9px]">Faltan 7 pts → Diamante</p>
-                  </div>
+      <p class="mt-6 max-w-lg text-lg leading-relaxed text-gray-500">
+        Registra cada partido, sube de rango ELO, vota al MVP y colecciona insignias con tus compis del club.
+        <strong class="text-night-900">El partido no acaba en la pista.</strong>
+      </p>
+
+      <!-- App store buttons — Playtomic style -->
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="#descargar" class="inline-flex items-center gap-3 rounded-2xl bg-night-900 px-5 py-3.5 text-white transition hover:bg-night-800">
+          <svg class="h-6 w-6 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+          </svg>
+          <div class="text-left">
+            <p class="text-[10px] leading-none opacity-60">Próximamente en</p>
+            <p class="text-sm font-bold leading-tight">App Store</p>
+          </div>
+        </a>
+        <a href="#descargar" class="inline-flex items-center gap-3 rounded-2xl bg-night-900 px-5 py-3.5 text-white transition hover:bg-night-800">
+          <svg class="h-6 w-6 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M3.609 1.814L13.792 12 3.61 22.186a1.77 1.77 0 0 1-.465-.635 1.86 1.86 0 0 1-.144-.742V3.291c0-.271.05-.534.144-.742a1.77 1.77 0 0 1 .464-.635zm2.502 20.453l9.326-9.326-2.562-2.562-6.764 11.888zm9.326-11.05l2.562-2.562L6.111 1.814l6.326 9.303zM16.437 3.291v17.418l5.553-5.553-5.553-9.865z"/>
+          </svg>
+          <div class="text-left">
+            <p class="text-[10px] leading-none opacity-60">Próximamente en</p>
+            <p class="text-sm font-bold leading-tight">Google Play</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- Stats row (Playtomic style) -->
+      <div class="mt-12 flex gap-8 border-t border-gray-100 pt-8">
+        <div>
+          <p class="font-display text-3xl text-night-900">14</p>
+          <p class="text-xs text-gray-400">Insignias únicas</p>
+        </div>
+        <div class="border-l border-gray-100 pl-8">
+          <p class="font-display text-3xl text-night-900">5</p>
+          <p class="text-xs text-gray-400">Rangos ELO</p>
+        </div>
+        <div class="border-l border-gray-100 pl-8">
+          <p class="font-display text-3xl text-night-900">∞</p>
+          <p class="text-xs text-gray-400">Rivales por batir</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Phone mockup on blue bg -->
+    <div class="relative z-10 flex justify-center lg:justify-end">
+      <div class="relative animate-float">
+        <!-- Phone -->
+        <div class="relative h-[560px] w-[260px] rounded-[2.8rem] border-4 border-white/20 bg-white/10 p-2 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.4)] backdrop-blur-sm">
+          <div class="absolute left-1/2 top-3 z-10 h-6 w-20 -translate-x-1/2 rounded-full bg-black/30"></div>
+          <div class="h-full w-full overflow-hidden rounded-[2.2rem] bg-gray-900">
+            <!-- App UI mockup -->
+            <div class="flex h-full flex-col bg-white">
+              <!-- App top bar -->
+              <div class="flex items-center justify-between bg-night-900 px-4 pt-10 pb-3">
+                <img src="/logo.svg" alt="" class="h-8 w-8"/>
+                <div class="flex gap-2">
+                  <div class="flex h-8 w-8 items-center justify-center rounded-full bg-white/10">🏅</div>
+                  <div class="flex h-8 w-8 items-center justify-center rounded-full bg-white/10">🔔</div>
+                  <div class="flex h-8 w-8 items-center justify-center rounded-full bg-orange-500 text-xs font-bold text-white">CM</div>
                 </div>
               </div>
-              <!-- Stats -->
-              <div class="grid grid-cols-3 gap-px bg-white/5 text-center text-[9px]">
-                {[['15','wins'],['88%','ratio'],['17','partidos']].map(([v,l]) => (
-                  <div class="bg-night-900 py-2">
-                    <p class="font-bold text-white text-sm">{v}</p>
-                    <p class="text-white/40">{l}</p>
+              <!-- Card FIFA style -->
+              <div class="m-3 rounded-2xl bg-gradient-to-br from-night-700 to-night-900 p-4 text-white shadow-lg">
+                <div class="flex items-start justify-between">
+                  <div>
+                    <p class="font-display text-4xl text-gold-400">87</p>
+                    <p class="text-[9px] uppercase tracking-widest text-gold-400/70">Rating ELO</p>
                   </div>
-                ))}
-              </div>
-              <!-- Badges -->
-              <div class="p-3">
-                <p class="text-white/40 text-[8px] uppercase tracking-wider mb-2">Insignias</p>
-                <div class="flex gap-1.5">
-                  {['🛡️','💣','⚡'].map(icon => (
-                    <div class="flex-1 bg-white/8 rounded-xl py-2 grid place-items-center text-base ring-1 ring-white/10">{icon}</div>
+                  <div class="rounded-lg bg-gold-500/20 px-2 py-1 text-xs font-bold text-gold-400">ORO</div>
+                </div>
+                <div class="mx-auto my-3 flex h-16 w-16 items-center justify-center rounded-full bg-brand-600/30 text-3xl">🎾</div>
+                <p class="text-center font-display text-lg tracking-wider">CARLOS M.</p>
+                <p class="text-center text-[9px] text-white/40">Club Padel Norte · Madrid</p>
+                <div class="mt-3 grid grid-cols-3 gap-1">
+                  {attributes.map((attr, i) => (
+                    <div class="rounded bg-white/5 px-1 py-1 text-center">
+                      <p class="text-[8px] text-white/40">{attr.key}</p>
+                      <p class="text-xs font-bold">{attrValues[i]}</p>
+                    </div>
                   ))}
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Phone 2 — Liga / Ligas (center, main) -->
-        <div class="relative z-30 animate-float" style="animation-delay: 1s;">
-          <div class="w-60 bg-night-800 rounded-[2rem] p-3 shadow-card-dark ring-1 ring-white/10">
-            <div class="bg-night-900 rounded-[1.6rem] overflow-hidden">
-              <!-- Header -->
-              <div class="bg-night-800 px-4 pt-4 pb-3">
-                <div class="flex justify-between items-center mb-3">
-                  <p class="text-white font-bold text-sm">Mis Ligas</p>
-                  <button class="bg-brand-500 text-white text-[9px] font-bold px-2.5 py-1 rounded-full">+ Nueva</button>
+              <!-- Recent activity -->
+              <div class="px-3 pb-2">
+                <p class="mb-2 text-[10px] font-bold uppercase tracking-wider text-gray-400">Actividad reciente</p>
+                <div class="flex items-center gap-2 rounded-xl bg-gray-50 px-3 py-2">
+                  <span class="text-lg">👑</span>
+                  <div>
+                    <p class="text-xs font-bold text-night-900">MVP del partido</p>
+                    <p class="text-[10px] text-gray-400">Hace 2h · Club Padel Norte</p>
+                  </div>
+                  <span class="ml-auto text-xs font-bold text-orange-500">+5 🪙</span>
                 </div>
-                <!-- Search bar -->
-                <div class="bg-white/8 rounded-xl px-3 py-2 flex items-center gap-2">
-                  <svg class="h-3 w-3 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-                  <span class="text-white/30 text-[10px]">Buscar torneo o jugador...</span>
-                </div>
-              </div>
-              <!-- Club cards -->
-              <div class="p-3 space-y-2">
-                <p class="text-white/40 text-[9px] uppercase tracking-wider">Clubs de la zona</p>
-                <div class="rounded-xl overflow-hidden ring-1 ring-white/10">
-                  <div class="h-14 bg-gradient-to-br from-brand-700 to-brand-900 flex items-end p-2">
-                    <div>
-                      <span class="text-[8px] bg-court-500/80 text-white px-1.5 py-0.5 rounded font-bold">OUTDOOR</span>
-                      <p class="text-white text-[10px] font-bold mt-0.5">Club Esportiu Gran Via Mar</p>
-                      <p class="text-white/60 text-[8px]">● 7 pistas</p>
-                    </div>
+                <div class="mt-1 flex items-center gap-2 rounded-xl bg-gray-50 px-3 py-2">
+                  <span class="text-lg">⚡</span>
+                  <div>
+                    <p class="text-xs font-bold text-night-900">El Clutch desbloqueada</p>
+                    <p class="text-[10px] text-gray-400">Insignia Bronce</p>
                   </div>
                 </div>
-                <!-- Liga card -->
-                <p class="text-white/40 text-[9px] uppercase tracking-wider pt-1">Mayo 2026</p>
-                <div class="rounded-xl bg-white/8 ring-1 ring-white/10 p-2.5">
-                  <p class="text-white text-[10px] font-bold">Liga PROD TEST</p>
-                  <p class="text-white/40 text-[8px]">Liga Regular · 0 partidos</p>
-                </div>
               </div>
-              <!-- Tab bar -->
-              <div class="border-t border-white/8 grid grid-cols-5 py-2">
-                {['⊞','🏆','➕','💬','👤'].map((icon, i) => (
-                  <div class={`grid place-items-center text-sm py-1 ${i === 1 ? 'text-gold-400' : 'text-white/30'}`}>{icon}</div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Phone 3 — Insignias -->
-        <div class="absolute right-0 top-16 animate-float-mid z-20" style="animation-delay: 2s;">
-          <div class="w-52 bg-night-800 rounded-[1.8rem] p-2.5 shadow-card-dark ring-1 ring-white/10">
-            <div class="bg-night-900 rounded-[1.4rem] overflow-hidden">
-              <div class="p-3 border-b border-white/8">
-                <p class="text-white/40 text-[9px] font-bold">3 conseguidas · toca para ver cómo</p>
-              </div>
-              <div class="p-3 space-y-2">
-                {[
-                  { name: 'El Muro', quote: '"Lo devuelve todo."', level: 'Platino', count: '×294', color: 'from-red-700 to-orange-600', icon: '🛡️' },
-                  { name: 'El Cañonero', quote: '"Smash y a casa."', level: 'Platino', count: '×98', color: 'from-orange-600 to-amber-500', icon: '💣' },
-                  { name: 'El MVP', quote: '"El mejor del campo."', level: 'Platino', count: '×3', color: 'from-purple-700 to-indigo-600', icon: '👑' },
-                ].map(b => (
-                  <div class="flex items-center gap-2.5 bg-white/6 rounded-xl p-2 ring-1 ring-white/8">
-                    <div class={`h-9 w-9 rounded-xl bg-gradient-to-br ${b.color} grid place-items-center text-base shrink-0`}>{b.icon}</div>
-                    <div class="min-w-0">
-                      <div class="flex items-center justify-between">
-                        <p class="text-white text-[10px] font-bold">{b.name}</p>
-                        <span class="text-gold-400 text-[8px] font-bold">{b.count}</span>
-                      </div>
-                      <p class="text-white/40 text-[8px] italic">{b.quote}</p>
-                    </div>
+              <!-- Bottom nav -->
+              <div class="mt-auto flex border-t border-gray-100">
+                {['⊞','🏆','＋','💬','👤'].map((icon, i) => (
+                  <div class:list={['flex flex-1 flex-col items-center py-2', i === 2 ? 'text-orange-500' : 'text-gray-300']}>
+                    <span class="text-lg">{icon}</span>
                   </div>
                 ))}
               </div>
@@ -184,29 +146,24 @@
           </div>
         </div>
 
-        <!-- Floating notification -->
-        <div class="absolute bottom-10 left-4 bg-white rounded-2xl px-4 py-3 shadow-xl animate-float-mid z-40 ring-1 ring-ink-900/8" style="animation-delay:0.5s;">
-          <p class="text-[9px] uppercase tracking-widest text-court-600 font-bold">🏆 Votado MVP</p>
-          <p class="text-sm font-bold text-ink-900">+50 pts · +8 MVP Rating</p>
+        <!-- Floating insignia -->
+        <div class="absolute -left-10 top-20 animate-float-delayed rounded-2xl bg-white px-3 py-2.5 shadow-card">
+          <div class="flex items-center gap-2">
+            <span class="text-xl">🧱</span>
+            <div>
+              <p class="text-xs font-bold text-night-900">El Muro</p>
+              <p class="text-[10px] text-gray-400">Insignia Oro ✨</p>
+            </div>
+          </div>
         </div>
-        <div class="absolute top-4 right-6 bg-night-800 rounded-2xl px-3 py-2 shadow-card-dark animate-float-slow z-40 ring-1 ring-white/10" style="animation-delay:1.5s;">
-          <p class="text-[9px] uppercase tracking-widest text-gold-400 font-bold">💎 Diamante</p>
-          <p class="text-xs font-bold text-white">Nuevo rango!</p>
+
+        <!-- Floating streak -->
+        <div class="absolute -right-8 bottom-28 animate-float rounded-2xl bg-white px-3 py-2 shadow-card">
+          <p class="text-xs font-bold text-orange-500">🔥 Racha ×5</p>
+          <p class="text-[10px] text-gray-400">victorias seguidas</p>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Marquee strip -->
-  <div class="border-t border-white/8 bg-night-900/80 backdrop-blur-sm overflow-hidden py-4 mt-4">
-    <div class="flex gap-10 whitespace-nowrap animate-marquee text-white/40 font-display font-semibold uppercase tracking-widest text-xs">
-      {Array(2).fill(0).map(() => (
-        <div class="flex gap-10 shrink-0">
-          {['· Reservas en 2 toques','· Ranking Bronce → Diamante','· Insignias por IA + comunidad','· Torneos con cuadros','· MVP por votación','· 3er tiempo organizado','· Red social de padeleros','· Stats avanzadas','· 0% comisión'].map(t => (
-            <span>{t}</span>
-          ))}
-        </div>
-      ))}
-    </div>
   </div>
 </section>

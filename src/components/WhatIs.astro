@@ -1,0 +1,71 @@
+---
+import { APP_NAME } from '../lib/brand';
+---
+<section class="bg-white py-24">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="grid items-center gap-16 lg:grid-cols-2">
+
+      <!-- Image side (app mockup / screenshot) -->
+      <div class="relative order-2 lg:order-1">
+        <div class="relative rounded-3xl overflow-hidden bg-cream aspect-[4/3] flex items-center justify-center shadow-card">
+          <!-- Placeholder: replace with actual screenshot -->
+          <div class="flex flex-col items-center justify-center gap-4 p-8 text-center">
+            <img src="/logo.svg" alt="Padel MVP" class="h-24 w-24 opacity-20"/>
+            <p class="text-sm text-gray-300">screenshot/muro.png</p>
+          </div>
+          <img
+            src="/screenshots/muro.png"
+            alt="Muro de Padel MVP"
+            class="absolute inset-0 h-full w-full object-cover object-top"
+            onerror="this.style.display='none'"
+          />
+        </div>
+        <!-- Floating stats card -->
+        <div class="absolute -right-4 -bottom-4 rounded-2xl bg-white p-4 shadow-card border border-gray-100">
+          <p class="text-xs text-gray-400 font-medium">Tu progreso hoy</p>
+          <div class="mt-2 flex items-center gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-full bg-brand-50 text-xl">🎾</div>
+            <div>
+              <p class="text-sm font-bold text-night-900">+12 ELO ganados</p>
+              <p class="text-xs text-gray-400">2 partidos · 1 victoria</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Text side -->
+      <div class="order-1 lg:order-2">
+        <h2 class="font-display text-4xl leading-none tracking-wide text-night-900 sm:text-5xl">
+          ¿QUÉ ES <span class="text-brand-600">{APP_NAME.toUpperCase()}?</span>
+        </h2>
+        <p class="mt-6 text-lg leading-relaxed text-gray-500">
+          {APP_NAME} es la <strong class="text-night-900">app de gamificación post-partido</strong> para
+          pádel amateur. Hacemos que cada partido cuente mucho más allá del último punto.
+        </p>
+        <p class="mt-4 text-gray-500 leading-relaxed">
+          Es el lugar donde los jugadores, clubs y compañeros de pista se reúnen para
+          compartir victorias, mejorar su nivel y vivir la comunidad del pádel como se merece.
+          Más que una app — es la red social del pádel amateur.
+        </p>
+
+        <div class="mt-8 grid grid-cols-2 gap-4">
+          {[
+            { icon: '📊', label: 'Rating ELO real', desc: 'Basado en partidos verificados' },
+            { icon: '🏅', label: '14 Insignias', desc: 'Bronce hasta Platino' },
+            { icon: '🏆', label: 'Ligas & Torneos', desc: 'Americanas y round-robin' },
+            { icon: '🔥', label: 'Muro social', desc: 'Feed del club con salseo' },
+          ].map(item => (
+            <div class="flex items-start gap-3 rounded-2xl bg-cream p-4">
+              <span class="text-2xl">{item.icon}</span>
+              <div>
+                <p class="text-sm font-bold text-night-900">{item.label}</p>
+                <p class="text-xs text-gray-400">{item.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

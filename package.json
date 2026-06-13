@@ -10,8 +10,9 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.16.18",
     "@astrojs/tailwind": "^5.1.4",
+    "@rollup/rollup-linux-arm64-gnu": "^4.62.0",
+    "astro": "^4.16.18",
     "tailwindcss": "^3.4.17"
   }
 }

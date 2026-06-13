@@ -1,0 +1,82 @@
+---
+import { APP_NAME } from '../lib/brand';
+---
+<section class="bg-white py-24">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="grid items-center gap-16 lg:grid-cols-2">
+
+      <!-- Image side -->
+      <div class="relative order-2">
+        <div class="relative overflow-hidden rounded-3xl bg-cream aspect-[4/3] flex items-center justify-center shadow-card">
+          <!-- Placeholder for club dashboard screenshot -->
+          <div class="flex flex-col items-center gap-3 p-8 text-center">
+            <!-- Mini dashboard mockup -->
+            <div class="w-full rounded-2xl bg-white shadow-card p-4">
+              <div class="flex items-center justify-between mb-3">
+                <p class="text-xs font-bold text-night-900">Club Padel Norte</p>
+                <span class="text-xs text-brand-600 font-semibold">En vivo →</span>
+              </div>
+              <div class="grid grid-cols-3 gap-2 mb-3">
+                {[
+                  { label: 'Jugadores', val: '42' },
+                  { label: 'Partidos', val: '128' },
+                  { label: 'Ligas', val: '3' },
+                ].map(s => (
+                  <div class="rounded-xl bg-cream p-2 text-center">
+                    <p class="font-display text-lg text-night-900">{s.val}</p>
+                    <p class="text-[9px] text-gray-400">{s.label}</p>
+                  </div>
+                ))}
+              </div>
+              <div class="space-y-1.5">
+                {['Carlos M.','Ana R.','Pedro L.'].map((n,i) => (
+                  <div class="flex items-center gap-2 rounded-lg bg-cream px-2 py-1.5">
+                    <span class="text-xs font-bold text-gray-300">#{i+1}</span>
+                    <div class="h-5 w-5 rounded-full bg-brand-600 flex items-center justify-center text-[8px] text-white font-bold">{n[0]}</div>
+                    <span class="text-xs text-night-900 font-medium">{n}</span>
+                    <span class="ml-auto text-[10px] text-gold-500 font-bold">{[1820,1650,1490][i]} ELO</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Text side -->
+      <div class="order-1">
+        <p class="section-label">Para clubs</p>
+        <h2 class="font-display text-4xl leading-none tracking-wide text-night-900 sm:text-5xl mt-3">
+          {APP_NAME.toUpperCase()}<br />
+          <span class="text-brand-600">PARA CLUBS</span>
+        </h2>
+        <p class="mt-6 text-lg leading-relaxed text-gray-500">
+          Gestiona tu club de pádel con una sola plataforma. Recibe actividad orgánica,
+          gestiona tus socios, crea ligas y aumenta la retención de tus jugadores.
+        </p>
+
+        <div class="mt-8 space-y-4">
+          {[
+            { icon: '📊', title: 'Leaderboard del club', desc: 'Ranking ELO de todos tus socios en tiempo real' },
+            { icon: '🏆', title: 'Ligas & Americanas', desc: 'Organiza competiciones internas sin Excel' },
+            { icon: '🔥', title: 'Engagement post-partido', desc: 'Tus socios vuelven a la app después de cada partido' },
+            { icon: '🖥️', title: 'Dashboard B2B', desc: 'Métricas, quests y gestión desde web (próximamente)' },
+          ].map(f => (
+            <div class="flex gap-4">
+              <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-cream text-xl">{f.icon}</div>
+              <div>
+                <p class="font-semibold text-night-900">{f.title}</p>
+                <p class="text-sm text-gray-500">{f.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <a href="/clubs" class="btn-outline mt-10 inline-flex">
+          Descubrir Padel MVP para Clubs
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>

@@ -1,0 +1,42 @@
+---
+import { badges, ranks } from '../lib/ranks';
+---
+<section class="bg-cream py-24">
+  <div class="mx-auto max-w-6xl px-5">
+    <div class="grid items-center gap-16 lg:grid-cols-2">
+      <div>
+        <p class="section-label">Colección</p>
+        <h2 class="section-title mt-3">INSIGNIAS CON PERSONALIDAD</h2>
+        <p class="mt-4 text-night-900/60">
+          14 insignias en 8 categorías. Cada una con tiers de Bronce a Platino. Tu muro se
+          llena de trofeos que cuentan quién eres en la pista.
+        </p>
+
+        <div class="mt-8 flex flex-wrap gap-2">
+          {
+            ranks.map((rank) => (
+              <span
+                class="rounded-full px-3 py-1 text-xs font-bold"
+                style={`background: ${rank.color}22; color: ${rank.color}; border: 1px solid ${rank.color}44`}
+              >
+                {rank.name}
+              </span>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-3 sm:grid-cols-3">
+        {
+          badges.map((badge) => (
+            <div class="feature-card !p-4 text-center">
+              <p class="text-3xl">{badge.emoji}</p>
+              <p class="mt-2 font-display text-sm tracking-wide text-night-900">{badge.name}</p>
+              <p class="text-[10px] uppercase tracking-wider text-night-900/40">{badge.category}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

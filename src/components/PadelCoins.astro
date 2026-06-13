@@ -1,0 +1,45 @@
+---
+const items = [
+  { brand: 'Bullpadel', item: 'Overgrip Pro', coins: 120 },
+  { brand: 'Head', item: 'Pelotas Pro', coins: 80 },
+  { brand: 'Nox', item: 'Gorra Team', coins: 200 },
+  { brand: 'Adidas', item: 'Camiseta Match', coins: 350 },
+];
+---
+<section class="bg-night-900 py-24">
+  <div class="mx-auto max-w-6xl px-5">
+    <div class="grid items-center gap-16 lg:grid-cols-2">
+      <div>
+        <p class="section-label !text-lime-400">Recompensas</p>
+        <h2 class="section-title-light mt-3">
+          JUEGA.<br />
+          <span class="text-lime-400">GANA.</span><br />
+          CANJEA.
+        </h2>
+        <p class="mt-6 text-white/50">
+          +5 PadelCoins por cada partido individual verificado. Acumula y canjea material real
+          de marcas deportivas en la tienda de la app.
+        </p>
+        <div class="mt-6 inline-flex items-center gap-2 rounded-full bg-lime-500/10 px-4 py-2">
+          <span class="text-lg">🪙</span>
+          <span class="text-sm font-bold text-lime-400">+5 PadelCoins / partido</span>
+        </div>
+      </div>
+
+      <div class="grid gap-3 sm:grid-cols-2">
+        {
+          items.map((item) => (
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:border-lime-500/30">
+              <p class="text-[10px] font-bold uppercase tracking-widest text-white/30">{item.brand}</p>
+              <p class="mt-1 font-display text-lg tracking-wide text-white">{item.item}</p>
+              <div class="mt-3 flex items-center gap-1.5">
+                <span class="text-sm">🪙</span>
+                <span class="text-sm font-bold text-lime-400">{item.coins} coins</span>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

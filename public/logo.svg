@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 240" fill="none">
+  <!-- Shield outer path (orange border) -->
+  <path d="M110 8
+    L20 42
+    L20 138
+    Q20 195 110 228
+    Q200 195 200 138
+    L200 42
+    Z"
+    fill="#F97316" />
+
+  <!-- Shield inner (white fill, inset 8px) -->
+  <path d="M110 18
+    L28 50
+    L28 138
+    Q28 188 110 218
+    Q192 188 192 138
+    L192 50
+    Z"
+    fill="white" />
+
+  <!-- Stars row (5 stars centered near top) -->
+  <!-- Star 1 -->
+  <polygon points="62,52 64.4,59.2 72,59.2 66,63.6 68.4,70.8 62,66.4 55.6,70.8 58,63.6 52,59.2 59.6,59.2"
+    fill="#F97316" transform="scale(0.72) translate(24, 8)"/>
+  <!-- Star 2 -->
+  <polygon points="62,52 64.4,59.2 72,59.2 66,63.6 68.4,70.8 62,66.4 55.6,70.8 58,63.6 52,59.2 59.6,59.2"
+    fill="#F97316" transform="scale(0.72) translate(56, 8)"/>
+  <!-- Star 3 (center) -->
+  <polygon points="62,52 64.4,59.2 72,59.2 66,63.6 68.4,70.8 62,66.4 55.6,70.8 58,63.6 52,59.2 59.6,59.2"
+    fill="#F97316" transform="scale(0.78) translate(73, 4)"/>
+  <!-- Star 4 -->
+  <polygon points="62,52 64.4,59.2 72,59.2 66,63.6 68.4,70.8 62,66.4 55.6,70.8 58,63.6 52,59.2 59.6,59.2"
+    fill="#F97316" transform="scale(0.72) translate(152, 8)"/>
+  <!-- Star 5 -->
+  <polygon points="62,52 64.4,59.2 72,59.2 66,63.6 68.4,70.8 62,66.4 55.6,70.8 58,63.6 52,59.2 59.6,59.2"
+    fill="#F97316" transform="scale(0.72) translate(184, 8)"/>
+
+  <!-- PADEL text -->
+  <text x="110" y="105"
+    text-anchor="middle"
+    font-family="'Arial Black', 'Impact', sans-serif"
+    font-size="38"
+    font-weight="900"
+    fill="#111111"
+    letter-spacing="1">PADEL</text>
+
+  <!-- Divider line -->
+  <line x1="38" y1="112" x2="182" y2="112" stroke="#F97316" stroke-width="2"/>
+
+  <!-- MVP text -->
+  <text x="110" y="152"
+    text-anchor="middle"
+    font-family="'Arial Black', 'Impact', sans-serif"
+    font-size="50"
+    font-weight="900"
+    font-style="italic"
+    fill="#F97316"
+    letter-spacing="-1">MVP</text>
+
+  <!-- Padel racket: oval head -->
+  <ellipse cx="110" cy="186" rx="22" ry="18" fill="#111111"/>
+  <!-- Racket dots grid -->
+  <circle cx="104" cy="181" r="2" fill="white"/>
+  <circle cx="110" cy="181" r="2" fill="white"/>
+  <circle cx="116" cy="181" r="2" fill="white"/>
+  <circle cx="104" cy="187" r="2" fill="white"/>
+  <circle cx="110" cy="187" r="2" fill="white"/>
+  <circle cx="116" cy="187" r="2" fill="white"/>
+  <circle cx="104" cy="193" r="2" fill="white"/>
+  <circle cx="110" cy="193" r="2" fill="white"/>
+  <circle cx="116" cy="193" r="2" fill="white"/>
+  <!-- Racket handle -->
+  <rect x="107" y="204" width="6" height="14" rx="3" fill="#111111"/>
+  <!-- Racket throat -->
+  <path d="M100 204 Q110 200 120 204" stroke="#111111" stroke-width="3" fill="none"/>
+
+  <!-- Left swoosh arm -->
+  <path d="M68 210 Q52 200 45 185" stroke="#111111" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <!-- Right swoosh arm -->
+  <path d="M152 210 Q168 200 175 185" stroke="#111111" stroke-width="5" stroke-linecap="round" fill="none"/>
+</svg>
